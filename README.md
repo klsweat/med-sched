@@ -21,4 +21,4 @@ How might your app work?
 o    User enters staff
 o    Staff views schedule
 o    Front end – clean and easy to enter data and view data
-o    Back end – store employees, calendar, availability, etc…
+o    Back end – store employees, calendar, availability, etc
