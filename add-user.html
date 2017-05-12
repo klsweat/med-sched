@@ -3,8 +3,10 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Med-Sched | Add User</title>
     <!-- Compiled and minified CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
@@ -15,46 +17,69 @@
 </head>
 
 <body>
+    <nav class="blue-grey">
+    <div class="nav-wrapper #006A53">
+      <a href="#!" class="brand-logo center">MedSched</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Account</a></li>
+        <li><a href="#">Matrix</a></li>
+        <li><a href="#">Projection</a></li>
+        <li><a href="#">Schedule</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">Javascript</a></li>
+        <li><a href="mobile.html">Mobile</a></li>
+      </ul>
+    </div>
+  </nav>
     <div class="row">
-        <form class="col s12">
+        <form class="col s12 center">
+            <div class="row page-label">
+                <div class="col s12 l8 offset-l2">
+                    <h2>Add a User</h2>
+                </div>
+            </div>
             <!---------------------------------------------->
             <div class="row">
-                <div class="input-field col s12 m6">
+                <div class="input-field col s12 l8 offset-l2">
                     <input id="first_name" type="text" class="validate">
                     <label for="first_name">First Name</label>
                 </div>
             </div>
             <!---------------------------------------------->
             <div class="row">
-                <div class="input-field col s12 m6">
+                <div class="input-field col s12 l8 offset-l2">
                     <input id="last_name" type="text" class="validate">
                     <label for="last_name">Last Name</label>
                 </div>
             </div>
             <!---------------------------------------------->
             <div class="row">
-                <div class="input-field col s12 m6">
+                <div class="input-field col s12 l8 offset-l2">
                     <input id="user_name" type="text" class="validate">
                     <label for="user_name">User Name</label>
                 </div>
             </div>
             <!---------------------------------------------->
             <div class="row">
-                <div class="input-field col s12 m6">
+                <div class="input-field col s12 l8 offset-l2">
                     <input id="password" type="password" class="validate">
                     <label for="password">Password</label>
                 </div>
             </div>
             <!---------------------------------------------->
             <div class="row">
-                <div class="input-field col s12 m6">
+                <div class="input-field col s12 l8 offset-l2">
                     <input id="email" type="email" class="validate">
                     <label for="email">Email</label>
                 </div>
             </div>
             <!---------------------------------------------->
             <!-- Dropdown Trigger -->
-            <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Partner</a>
+            <a class='dropdown-button btn blue-grey' href='#' data-activates='dropdown1'>Partner</a>
             <!-- Dropdown Structure -->
             <ul id='dropdown1' class='dropdown-content'>
                 <li><a href="#!">St. Josephs</a></li>
@@ -65,5 +90,8 @@
     </div>
 </body>
 <script>
+    $( document ).ready(function(){
+        $(".button-collapse").sideNav();
+    });
 </script>
 </html>
