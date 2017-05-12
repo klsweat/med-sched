@@ -26,20 +26,24 @@
         <li><a href="#">Matrix</a></li>
         <li><a href="#">Projection</a></li>
         <li><a href="#">Schedule</a></li>
+        <li><a href="#">Request</a></li>
+        <li><a href="#">Admin</a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li><a href="#">Account</a></li>
         <li><a href="#">Matrix</a></li>
         <li><a href="#">Projection</a></li>
         <li><a href="#">Schedule</a></li>
+        <li><a href="#">Request</a></li>
+        <li><a href="#">Admin</a></li>
       </ul>
     </div>
   </nav>
     <div class="row">
-        <form class="col s12 center">
+        <form class="col s12">
             <div class="row page-label">
                 <div class="col s12 l8 offset-l2">
-                    <h2>Add a User</h2>
+                    <h3>Add a User</h3>
                 </div>
             </div>
             <!---------------------------------------------->
@@ -66,11 +70,10 @@
             <!---------------------------------------------->
             <div class="row">
                 <div class="input-field col s12 l8 offset-l2">
-                    <input id="password" type="password" class="validate">
-                    <label for="password">Password</label>
+                    <input id="empId" type="text" class="validate">
+                    <label for="empId">Employee ID</label>
                 </div>
             </div>
-            <!---------------------------------------------->
             <div class="row">
                 <div class="input-field col s12 l8 offset-l2">
                     <input id="email" type="email" class="validate">
@@ -78,14 +81,33 @@
                 </div>
             </div>
             <!---------------------------------------------->
-            <!-- Dropdown Trigger -->
-            <a class='dropdown-button btn blue-grey' href='#' data-activates='dropdown1'>Partner</a>
-            <!-- Dropdown Structure -->
-            <ul id='dropdown1' class='dropdown-content'>
-                <li><a href="#!">St. Josephs</a></li>
-                <li><a href="#!">Candler</a></li>
-            </ul>
+            <div class="row">
+                <div class="input-field col s12 l8 offset-l2">
+                    <input id="password" type="password" class="validate">
+                    <label for="password">Password</label>
+                </div>
+            </div>
             <!---------------------------------------------->
+            <div class="input-field col s12 l8 offset-l2">
+                <div class="row">
+                    <div class="col s6">
+                        <h4>Partner</h4>
+                        <input name="partner" type="radio" id="sjc">    
+                        <label for="sjc">St. Joseph's Hospital</label><br><br>
+                        <input name="partner" type="radio" id="ch">   
+                        <label for="ch">Candler Hospital</label>    
+                    </div>
+
+                    <div class="col s6">
+                        <h4>Call Status</h4>
+                        <input name="group1" type="radio" id="posn_type_call">    
+                        <label for="posn_type_call"> Call team</label><br><br>
+                        <input name="group1" type="radio" id="posn_type_non_call">   
+                <label for="posn_type_non_call"> Non-call team</label>
+                    </div>
+                </div>
+            </div>
+
         </form>
     </div>
 </body>
