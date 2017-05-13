@@ -1,4 +1,4 @@
-var matrixData = {
+matrixData = {
     week01: {
         mon: "12", 
         tue: "11",
