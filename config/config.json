@@ -2,8 +2,8 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "database_development",
-    "host": "127.0.0.1",
+    "database": "scheduledb",
+    "host": "192.168.1.235",
     "dialect": "mysql"
   },
   "test": {
