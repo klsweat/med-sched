@@ -8,6 +8,9 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATEONLY,
       allowNull: false
     },
+    comment: {
+      type: DataTypes.TEXT
+    }
     status: {
       type: DataTypes.STRING,
       defaultValue: 'Pending'
@@ -17,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       classMethods: {
         associate: function(models) {
           //each staff is part of a user. period
-          VacationRequest.belongsTo(models.Staff, {
+          VacationRequest.belongsTo(models.User, {
             foreignKey: {
               allowNull: false
             }
