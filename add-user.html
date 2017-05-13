@@ -22,12 +22,11 @@
       <a href="#!" class="brand-logo center">MedSched</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">Account</a></li>
-        <li><a href="#">Matrix</a></li>
-        <li><a href="#">Projection</a></li>
-        <li><a href="#">Schedule</a></li>
-        <li><a href="#">Request</a></li>
-        <li><a href="#">Admin</a></li>
+        <li><a href="#"><i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="account">assignment_ind</i></a></li>
+        <li><a href="#"><i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="matrix">view_module</i></a></li>
+        <li><a href="#"><i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="schedule">today</i></a></li>
+        <li><a href="#"><i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="request">note_add</i></a></li>
+        <li><a href="#"><i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="admin">settings</i></a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li><a href="#">Account</a></li>
@@ -43,48 +42,46 @@
         <form class="col s12">
             <div class="row page-label">
                 <div class="col s12 l8 offset-l2">
-                    <h3>Add a User</h3>
+                    <h4>Add a User</h4>
                 </div>
             </div>
             <!---------------------------------------------->
             <div class="row">
                 <div class="input-field col s12 l8 offset-l2">
-                    <input id="first_name" type="text" class="validate">
-                    <label for="first_name">First Name</label>
+                    <div class="row">
+                        <div class="col s6">
+                            <input id="first_name" type="text" class="validate" placeholder="First Name">
+                        </div>
+                        <div class="col s6">
+                            <input id="last_name" type="text" class="validate" placeholder="Last Name">
+                        </div>
+                    </div>
                 </div>
             </div>
             <!---------------------------------------------->
             <div class="row">
                 <div class="input-field col s12 l8 offset-l2">
-                    <input id="last_name" type="text" class="validate">
-                    <label for="last_name">Last Name</label>
+                    <div class="row">
+                        <div class="col s6">
+                            <input id="email" type="text" class="validate" placeholder="Email">
+                        </div>
+                        <div class="col s6">
+                            <input id="password" type="text" class="validate" placeholder="Password">
+                        </div>
+                    </div>
                 </div>
             </div>
             <!---------------------------------------------->
-            <div class="row">
+             <div class="row">
                 <div class="input-field col s12 l8 offset-l2">
-                    <input id="user_name" type="text" class="validate">
-                    <label for="user_name">User Name</label>
-                </div>
-            </div>
-            <!---------------------------------------------->
-            <div class="row">
-                <div class="input-field col s12 l8 offset-l2">
-                    <input id="empId" type="text" class="validate">
-                    <label for="empId">Employee ID</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12 l8 offset-l2">
-                    <input id="email" type="email" class="validate">
-                    <label for="email">Email</label>
-                </div>
-            </div>
-            <!---------------------------------------------->
-            <div class="row">
-                <div class="input-field col s12 l8 offset-l2">
-                    <input id="password" type="password" class="validate">
-                    <label for="password">Password</label>
+                    <div class="row">
+                        <div class="col s6">
+                            <input id="mobile" type="text" class="validate" placeholder="Mobile Phone">
+                        </div>
+                        <div class="col s6">
+                            <input id="empID" type="text" class="validate" placeholder="Employee Id">
+                        </div>
+                    </div>
                 </div>
             </div>
             <!---------------------------------------------->
@@ -106,14 +103,17 @@
                 <label for="posn_type_non_call"> Non-call team</label>
                     </div>
                 </div>
+                <div class="row"><br>
+                    <a class="waves-effect waves-light btn" type="Submit">Submit</a>
+                </div>
             </div>
-
         </form>
     </div>
 </body>
 <script>
     $( document ).ready(function(){
         $(".button-collapse").sideNav();
+        $('.tooltipped').tooltip({delay: 50});
     });
 </script>
 </html>
