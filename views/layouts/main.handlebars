@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Med-Sched | Add User</title>
+    <!-- Compiled and minified CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+
+</head>
+<body>
+    <nav class="blue-grey">
+    <div class="nav-wrapper #006A53">
+      <a href="#!" class="brand-logo center">MedSched</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#"><i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="account">assignment_ind</i></a></li>
+        <li><a href="#"><i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="matrix">view_module</i></a></li>
+        <li><a href="#"><i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="schedule">today</i></a></li>
+        <li><a href="#"><i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="request">note_add</i></a></li>
+        <li><a href="#"><i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="admin">settings</i></a></li>
+        <li><a href="#"><i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="log out">not_intersted</i></a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="#">Account</a></li>
+        <li><a href="#">Matrix</a></li>
+        <li><a href="#">Projection</a></li>
+        <li><a href="#">Schedule</a></li>
+        <li><a href="#">Request</a></li>
+        <li><a href="#">Admin</a></li>
+        <li><a href="#">Log out</a></li>
+
+      </ul>
+    </div>
+  </nav>
+    <div class="row">
+        {{{body}}}
+    </div>
+</body>
+<script>
+    $( document ).ready(function(){
+        $(".button-collapse").sideNav();
+        $('.tooltipped').tooltip({delay: 50});
+    });
+</script>
+</html>
