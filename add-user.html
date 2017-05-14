@@ -39,10 +39,31 @@
         </div>
     </nav>
     <div class="row">
+        <div class="row page-label">
+            <div class="col s12 l8 offset-l2">
+                <!---------------------------------------------->
+                <h4>Administration</h4>
+
+                <div class="row">
+                    <div class="input-field col s12 l8 offset-l2">
+                        <div class="row">
+                            <div class="col s6">
+                                <a class="waves-effect waves-light btn">Add User</a> <br><br><a class="waves-effect waves-light btn">Add Partner</a><br><br>
+                            </div>
+                            <div class="col s6">
+                                <a class="waves-effect waves-light btn">Update Matrix</a> <br><br><a class="waves-effect waves-light btn">Process Vacation</a><br><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---------------------------------------------->
         <form class="col s12">
             <div class="row page-label">
                 <div class="col s12 l8 offset-l2">
                     <br> <br>
+                    <hr>
                     <h4>Vacay Requay</h4>
                     <div class="row">
                         <div class="input-field col s12 l8 offset-l2">
@@ -61,103 +82,167 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12 l8 offset-l2">
-                        <a class="waves-effect waves-light btn" type="Submit">Submit</a>
+                            <a class="waves-effect waves-light btn" type="Submit">Submit</a>
                         </div>
                     </div>
-                    
-
-
-                    <hr>
-                    <h4>Administration</h4>
-
-                    <div class="row">
-                        <div class="input-field col s12 l8 offset-l2">
-                            <div class="row">
-                                <div class="col s6">
-                                    <a class="waves-effect waves-light btn">Add User</a> <br><br><a class="waves-effect waves-light btn">Add Partner</a><br><br>
-                                </div>
-                                <div class="col s6">
-                                    <a class="waves-effect waves-light btn">Update Matrix</a> <br><br><a class="waves-effect waves-light btn">Process Vacation</a><br><br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <h4>Add a User</h4>
-                </div>
-            </div>
-            <!---------------------------------------------->
-            <div class="row">
-                <div class="input-field col s12 l8 offset-l2">
-                    <div class="row">
-                        <div class="col s6">
-                            <input id="first_name" type="text" class="validate" placeholder="First Name">
-                        </div>
-                        <div class="col s6">
-                            <input id="last_name" type="text" class="validate" placeholder="Last Name">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!---------------------------------------------->
-            <div class="row">
-                <div class="input-field col s12 l8 offset-l2">
-                    <div class="row">
-                        <div class="col s6">
-                            <input id="email" type="text" class="validate" placeholder="Email">
-                        </div>
-                        <div class="col s6">
-                            <input id="password" type="text" class="validate" placeholder="Password">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!---------------------------------------------->
-            <div class="row">
-                <div class="input-field col s12 l8 offset-l2">
-                    <div class="row">
-                        <div class="col s6">
-                            <input id="mobile" type="text" class="validate" placeholder="Mobile Phone">
-                        </div>
-                        <div class="col s6">
-                            <input id="empId" type="text" class="validate" placeholder="Employee Id">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!---------------------------------------------->
-            <div class="input-field col s12 l8 offset-l2">
-                <div class="row">
-                    <div class="col s4">
-                        <h4>Partner</h4>
-                        <input name="partner" type="radio" id="sjc">
-                        <label for="sjc">St. Joseph's Hospital</label><br><br>
-                        <input name="partner" type="radio" id="ch">
-                        <label for="ch">Candler Hospital</label>
-                    </div>
-
-                    <div class="col s4">
-                        <h4>Call Status</h4>
-                        <input name="group1" type="radio" id="posn_type_call">
-                        <label for="posn_type_call"> Call team</label><br><br>
-                        <input name="group1" type="radio" id="posn_type_non_call">
-                        <label for="posn_type_non_call"> Non-call team</label>
-                    </div>
-
-                    <div class="col s4">
-                        <h4>Special Access</h4>
-                        <input name="group2" type="checkbox" id="admin">
-                        <label for="admin">Administrator</label><br><br>
-                        <input name="group2" type="checkbox" id="scheduleMgr">
-                        <label for="scheduleMgr">Schedule Manager</label>
-                    </div>
-                </div>
-                <div class="row"><br>
-                    <a class="waves-effect waves-light btn" type="Submit">Submit</a>
                 </div>
             </div>
         </form>
-    </div>
+
+        <div class="row page-label">
+            <div class="col s12 l8 offset-l2">
+
+                <hr>
+                <h4>Matrix</h4>
+
+                <div class="row">
+                    <div class="input-field col s12 l8 offset-l2">
+                        <div class="row">
+                            <p>Insert Matrix</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---------------------------------------------->
+        <form class="col s12">
+                    <hr>
+                   
+
+                     
+                    <!---------------------------------------------->
+                    <div class="row">
+                        <div class="input-field col s12 l8 offset-l2"><h4>Add a User</h4>
+                            <div class="input-field col s6">
+                                <input id="first_name" type="text" class="validate">
+                                <label for="first_name">First</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="last_name" type="text" class="validate">
+                                <label for="last_name">Last</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!---------------------------------------------->
+                    <div class="row">
+                        <div class="input-field col s12 l8 offset-l2">
+                            <div class="input-field col s6">
+                                <input id="email" type="email" class="validate">
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="password" type="password" class="validate">
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!---------------------------------------------->
+                    <div class="row">
+                        <div class="input-field col s12 l8 offset-l2">
+                            <div class="input-field col s6">
+                                <input id="mobile" type="tel" class="validate">
+                                <label for="mobile">Mobile</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="empId" type="text" class="validate">
+                                <label for="empId">Employee Id</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!---------------------------------------------->
+                    <div class="input-field col s12 l8 offset-l2">
+                        <div class="row">
+                            <div class="col s4">
+                                <h4>Partner</h4>
+                                <input name="partner" type="radio" id="sjc">
+                                <label for="sjc">St. Joseph's Hospital</label><br><br>
+                                <input name="partner" type="radio" id="ch">
+                                <label for="ch">Candler Hospital</label>
+                            </div>
+
+                            <div class="col s4">
+                                <h4>Call Status</h4>
+                                <input name="group1" type="radio" id="posn_type_call">
+                                <label for="posn_type_call"> Call team</label><br><br>
+                                <input name="group1" type="radio" id="posn_type_non_call">
+                                <label for="posn_type_non_call"> Non-call team</label>
+                            </div>
+
+                            <div class="col s4">
+                                <h4>Special Access</h4>
+                                <input name="group2" type="checkbox" id="admin">
+                                <label for="admin">Administrator</label><br><br>
+                                <input name="group2" type="checkbox" id="scheduleMgr">
+                                <label for="scheduleMgr">Schedule Manager</label>
+                            </div>
+                        </div>
+                        <div class="input-field col s12 l8 offset-l2"><br>
+                            <a class="waves-effect waves-light btn" type="Submit">Submit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <form class="col s12">
+            <div class="row page-label">
+                <div class="col s12 l8 offset-l2">
+                    <br>
+                    <hr> <br>
+
+                    <h4>Add Partner</h4>
+
+                    <!---------------------------------------------->
+                    <div class="row">
+                        <div class="input-field col s12 l8 offset-l2">
+                            <div class="row">
+
+                                <input id="location" type="text" class="validate" placeholder="Location">
+                            </div>
+                        </div>
+                    </div>
+                    <!---------------------------------------------->
+                    <div class="input-field col s12 l8 offset-l2">
+                        <div class="row"><br>
+                            <a class="waves-effect waves-light btn" type="Submit">Submit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <form class="col s12">
+            <div class="row page-label">
+                <div class="col s12 l8 offset-l2">
+                    <br>
+                    <hr> <br>
+
+                    <h4>Login</h4>
+
+                    <!---------------------------------------------->
+                    <div class="row">
+                        <div class="input-field col s8 offset-s2">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="icon_prefix" type="text" class="validate">
+                            <label for="icon_prefix">Email</label>
+                        </div>
+                        <div class="input-field col s8 offset-s2">
+                            <i class="material-icons prefix">vpn_key</i>
+                            <input id="icon_telephone" type="password" class="validate">
+                            <label for="icon_telephone">Password</label>
+                        </div>
+                    </div>
+                    <!---------------------------------------------->
+                    <div class="input-field col s12 l8 offset-l2">
+                        <div class="row"><br>
+                            <a class="waves-effect waves-light btn" type="Submit">Submit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    
     <style>
         .btn {
             width: 100%
@@ -174,7 +259,7 @@
         $(".datepicker").pickadate({
             selectMonths: true, // Creates a dropdown to control month
             selectYears: 15 // Creates a dropdown of 15 years to control year
-            });
+        });
     });
 </script>
 
