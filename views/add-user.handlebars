@@ -49,24 +49,24 @@
                     <div class="col s6">
                         <p>Partner</p>
                         {{#each Partner}}
-                        <input name="PartnerId" + {{this.id}} type="radio" id="PartnerId" + {{this.id}}>    
-                        <label for="PartnerId" + {{this.id}}>{{this.name}}</label><br><br>
+                        <input name="PartnerId" type="radio" id="{{this.id}}">    
+                        <label for="{{this.id}}">{{this.name}}</label><br><br>
                         {{/each}}   
                     </div>
 
                     <div class="col s6">
                         <p>Position Status</p>
-                        {{#each Status}}
-                        <input name="StatusId" + {{this.id}} type="radio" id="StatusId" + {{this.id}}>    
-                        <label for="StatusId" + {{this.id}}>{{this.name}}</label><br><br>
+                        {{#each Partner}}
+                        <input name="StatusId" type="radio" id="{{this.id}}">    
+                        <label for="{{this.id}}">{{this.name}}</label><br><br>
                         {{/each}} 
                     </div>
 
                     <div class="col s4">
                         <p>Special Access</p>
-                        {{#each Group}}
-                        <input name="GroupId" + {{this.id}} type="checkbox" id="GroupId" + {{this.id}}>    
-                        <label for="GroupId" + {{this.id}}>{{this.name}}</label><br><br>
+                        {{#each Partner}}
+                        <input name="GroupId" type="checkbox" id="{{this.id}}">    
+                        <label for="{{this.id}}">{{this.name}}</label><br><br>
                         {{/each}} 
                     </div>
                     
