@@ -1,9 +1,10 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
+    "username": "jess",
+    "password": "gilligan",
     "database": "scheduledb",
-    "host": "192.168.1.235",
+    "host": "savssh.myftp.org",
+    "port": 3242,
     "dialect": "mysql"
   },
   "test": {

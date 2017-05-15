@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     comment: {
       type: DataTypes.TEXT
-    }
+    },
     status: {
       type: DataTypes.STRING,
       defaultValue: 'Pending'

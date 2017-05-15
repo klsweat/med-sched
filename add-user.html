@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Med-Sched | Add User</title>
+    <!-- Compiled and minified CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+
+</head>
+
+<body>
+    <nav class="blue-grey">
+        <div class="nav-wrapper #006A53">
+            <a href="#!" class="brand-logo center">MedSched</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#"><i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="account">assignment_ind</i></a></li>
+                <li><a href="#"><i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="matrix">view_module</i></a></li>
+                <li><a href="#"><i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="schedule">today</i></a></li>
+                <li><a href="#"><i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="request">note_add</i></a></li>
+                <li><a href="#"><i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="admin">settings</i></a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li><a href="#">Account</a></li>
+                <li><a href="#">Matrix</a></li>
+                <li><a href="#">Projection</a></li>
+                <li><a href="#">Schedule</a></li>
+                <li><a href="#">Request</a></li>
+                <li><a href="#">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="row page-label">
+            <div class="col s12 l8 offset-l2">
+                <!---------------------------------------------->
+                <h4>Administration</h4>
+
+                <div class="row">
+                    <div class="input-field col s12 l8 offset-l2">
+                        <div class="row">
+                            <div class="col s6">
+                                <a class="waves-effect waves-light btn">Add User</a> <br><br><a class="waves-effect waves-light btn">Add Partner</a><br><br>
+                            </div>
+                            <div class="col s6">
+                                <a class="waves-effect waves-light btn">Update Matrix</a> <br><br><a class="waves-effect waves-light btn">Process Vacation</a><br><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---------------------------------------------->
+        <form class="col s12">
+            <div class="row page-label">
+                <div class="col s12 l8 offset-l2">
+                    <br> <br>
+                    <hr>
+                    <h4>Vacay Requay</h4>
+                    <div class="row">
+                        <div class="input-field col s12 l8 offset-l2">
+                            <div class="row">
+                                <div class="col s6">
+                                    <input class='datepicker' id="start_date" type="date" class="validate" placeholder="start date">
+                                </div>
+                                <div class="col s6">
+                                    <input class='datepicker' id="end_date" type="date" class="validate" placeholder="start date">
+                                </div>
+                                <div class="col s12">
+                                    <textarea id="comment" class="materialize-textarea" placeholder="Please add additional details"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 l8 offset-l2">
+                            <a class="waves-effect waves-light btn" type="Submit">Submit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="row page-label">
+            <div class="col s12 l8 offset-l2">
+
+                <hr>
+                <h4>Matrix</h4>
+
+                <div class="row">
+                    <div class="input-field col s12 l8 offset-l2">
+                        <div class="row">
+                            <p>Insert Matrix</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---------------------------------------------->
+        <form class="col s12">
+                    <hr>
+                   
+
+                     
+                    <!---------------------------------------------->
+                    <div class="row">
+                        <div class="input-field col s12 l8 offset-l2"><h4>Add a User</h4>
+                            <div class="input-field col s6">
+                                <input id="first_name" type="text" class="validate">
+                                <label for="first_name">First</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="last_name" type="text" class="validate">
+                                <label for="last_name">Last</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!---------------------------------------------->
+                    <div class="row">
+                        <div class="input-field col s12 l8 offset-l2">
+                            <div class="input-field col s6">
+                                <input id="email" type="email" class="validate">
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="password" type="password" class="validate">
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!---------------------------------------------->
+                    <div class="row">
+                        <div class="input-field col s12 l8 offset-l2">
+                            <div class="input-field col s6">
+                                <input id="mobile" type="tel" class="validate">
+                                <label for="mobile">Mobile</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="empId" type="text" class="validate">
+                                <label for="empId">Employee Id</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!---------------------------------------------->
+                    <div class="input-field col s12 l8 offset-l2">
+                        <div class="row">
+                            <div class="col s4">
+                                <h4>Partner</h4>
+                                <input name="partner" type="radio" id="sjc">
+                                <label for="sjc">St. Joseph's Hospital</label><br><br>
+                                <input name="partner" type="radio" id="ch">
+                                <label for="ch">Candler Hospital</label>
+                            </div>
+
+                            <div class="col s4">
+                                <h4>Call Status</h4>
+                                <input name="group1" type="radio" id="posn_type_call">
+                                <label for="posn_type_call"> Call team</label><br><br>
+                                <input name="group1" type="radio" id="posn_type_non_call">
+                                <label for="posn_type_non_call"> Non-call team</label>
+                            </div>
+
+                            <div class="col s4">
+                                <h4>Special Access</h4>
+                                <input name="group2" type="checkbox" id="admin">
+                                <label for="admin">Administrator</label><br><br>
+                                <input name="group2" type="checkbox" id="scheduleMgr">
+                                <label for="scheduleMgr">Schedule Manager</label>
+                            </div>
+                        </div>
+                        <div class="input-field col s12 l8 offset-l2"><br>
+                            <a class="waves-effect waves-light btn" type="Submit">Submit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <form class="col s12">
+            <div class="row page-label">
+                <div class="col s12 l8 offset-l2">
+                    <br>
+                    <hr> <br>
+
+                    <h4>Add Partner</h4>
+
+                    <!---------------------------------------------->
+                    <div class="row">
+                        <div class="input-field col s12 l8 offset-l2">
+                            <div class="row">
+
+                                <input id="location" type="text" class="validate" placeholder="Location">
+                            </div>
+                        </div>
+                    </div>
+                    <!---------------------------------------------->
+                    <div class="input-field col s12 l8 offset-l2">
+                        <div class="row"><br>
+                            <a class="waves-effect waves-light btn" type="Submit">Submit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <form class="col s12">
+            <div class="row page-label">
+                <div class="col s12 l8 offset-l2">
+                    <br>
+                    <hr> <br>
+
+                    <h4>Login</h4>
+
+                    <!---------------------------------------------->
+                    <div class="row">
+                        <div class="input-field col s8 offset-s2">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="icon_prefix" type="text" class="validate">
+                            <label for="icon_prefix">Email</label>
+                        </div>
+                        <div class="input-field col s8 offset-s2">
+                            <i class="material-icons prefix">vpn_key</i>
+                            <input id="icon_telephone" type="password" class="validate">
+                            <label for="icon_telephone">Password</label>
+                        </div>
+                    </div>
+                    <!---------------------------------------------->
+                    <div class="input-field col s12 l8 offset-l2">
+                        <div class="row"><br>
+                            <a class="waves-effect waves-light btn" type="Submit">Submit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    
+    <style>
+        .btn {
+            width: 100%
+        }
+    </style>
+
+</body>
+<script>
+    $(document).ready(function () {
+        $(".button-collapse").sideNav();
+        $('.tooltipped').tooltip({
+            delay: 50
+        });
+        $(".datepicker").pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15 // Creates a dropdown of 15 years to control year
+        });
+    });
+</script>
+
+</html>
