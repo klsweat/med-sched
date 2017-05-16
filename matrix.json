@@ -1,146 +1,146 @@
-var matrixData = {
-    week01: {
-        mon: "12", 
-        tue: "11",
-        wed: "CALL",
-        thur: "",
-        fri: "",
-        satsun: ""
+{    
+    "week01": {
+        "mon": "12", 
+        "tue": "11",
+        "wed": "CALL",
+        "thur": "",
+        "fri": "",
+        "satsun": ""
     },
-    week02: {
-        mon: "", 
-        tue: "",
-        wed: "12",
-        thur: "11",
-        fri: " Call ",
-        satsun: 
+    "week02": {
+        "mon": "", 
+        "tue": "",
+        "wed": "12",
+        "thur": "11",
+        "fri": " Call ",
+        "satsun": 
     },
-    week03: {
-        mon: "6", 
-        tue: "9",
-        wed: "8",
-        thur: "1",
-        fri: "2",
-        satsun: 
+    "week03": {
+        "mon": "6", 
+        "tue": "9",
+        "wed": "8",
+        "thur": "1",
+        "fri": "2",
+        "satsun": 
     },
-    week04: {
-        mon: "9", 
-        tue: "1",
-        wed: "2",
-        thur: "9",
-        fri: "1",
-        satsun: 
+   "week04": {
+        "mon": "9", 
+        "tue": "1",
+        "wed": "2",
+        "thur": "9",
+        "fri": "1",
+        "satsun": ""
     },
-    week05: {
-        mon: "vfi", 
-        tue: "vfi",
-        wed: "vfi",
-        thur: "vfi",
-        fri: "vfi",
-        satsun: "vfi"
+    "week05": {
+        "mon": "vfi", 
+        "tue": "vfi",
+        "wed": "vfi",
+        "thur": "vfi",
+        "fri": "vfi",
+        "satsun": "vfi"
     }, 
-    week06: {
-        mon: "10", 
-        tue: "2",
-        wed: "1",
-        thur: "6",
-        fri: "6",
-        satsun: 
+    "week06": {
+        "mon": "10", 
+        "tue": "2",
+        "wed": "1",
+        "thur": "6",
+        "fri": "6",
+        "satsun": ""
     },
-    week07: {
-        mon: "CALL", 
-        tue: "",
-        wed: "",
-        thur: " 12 ",
-        fri: " 13 ",
-        satsun: ""
+    "week07": {
+        "mon": "CALL", 
+        "tue": "",
+        "wed": "",
+        "thur": " 12 ",
+        "fri": " 13 ",
+        "satsun": ""
     },
-    week08: {
-        mon: "vfi", 
-        tue: "vfi",
-        wed: "vfi",
-        thur: "vfi",
-        fri: "vfi",
-        satsun: "vfi"
+    "week08": {
+        "mon": "vfi", 
+        "tue": "vfi",
+        "wed": "vfi",
+        "thur": "vfi",
+        "fri": "vfi",
+        "satsun": "vfi"
     },
-    week09: {
-        mon: "", 
-        tue: "10",
-        wed: "9",
-        thur: "10",
-        fri: "11",
-        satsun: ""
+    "week09": {
+        "mon": "", 
+        "tue": "10",
+        "wed": "9",
+        "thur": "10",
+        "fri": "11",
+        "satsun": ""
     },
-    week10: {
-        mon: "11", 
-        tue: "CALL",
-        wed: "",
-        thur: "",
-        fri: "9",
-        satsun: "CALL"
+    "week10": {
+        "mon": "11", 
+        "tue": "CALL",
+        "wed": "",
+        "thur": "",
+        "fri": "9",
+        "satsun": "CALL"
     },
-    week11: {
-        mon: "", 
-        tue: "13",
-        wed: "10",
-        thur: "CALL",
-        fri: "",
-        satsun: ""
+    "week11": {
+        "mon": "", 
+        "tue": "13",
+        "wed": "10",
+        "thur": "CALL",
+        "fri": "",
+        "satsun": ""
     },
-    week12: {
-        mon: "1", 
-        tue: "6",
-        wed: "6",
-        thur: "2",
-        fri: "10",
-        satsun: ""
+    "week12": {
+        "mon": "1", 
+        "tue": "6",
+        "wed": "6",
+        "thur": "2",
+        "fri": "10",
+        "satsun": ""
     },
-    week13: {
-        mon: "2", 
-        tue: "12",
-        wed: "11",
-        thur: "",
-        fri: "12",
-        satsun: ""
+    "week13": {
+        "mon": "2", 
+        "tue": "12",
+        "wed": "11",
+        "thur": "",
+        "fri": "12",
+        "satsun": ""
     },
-    week14: {
-        mon: "3", 
-        tue: "5",
-        wed: "5",
-        thur: "4",
-        fri: "8",
-        satsun: ""
+    "week14": {
+        "mon": "3", 
+        "tue": "5",
+        "wed": "5",
+        "thur": "4",
+        "fri": "8",
+        "satsun": ""
     },
-    week15: {
-        mon: "8", 
-        tue: "3",
-        wed: "4",
-        thur: "7",
-        fri: "4",
-        satsun: ""
+    "week15": {
+        "mon": "8", 
+        "tue": "3",
+        "wed": "4",
+        "thur": "7",
+        "fri": "4",
+        "satsun": ""
     },
-    week16: {
-        mon: "4", 
-        tue: "8",
-        wed: "3",
-        thur: "5",
-        fri: "7",
-        satsun: ""
+    "week16": {
+        "mon": "4", 
+        "tue": "8",
+        "wed": "3",
+        "thur": "5",
+        "fri": "7",
+        "satsun": ""
     },
-    week17: {
-        mon: "7", 
-        tue: "4",
-        wed: "7",
-        thur: "3",
-        fri: "5",
-        satsun: ""
+    "week17": {
+        "mon": "7", 
+        "tue": "4",
+        "wed": "7",
+        "thur": "3",
+        "fri": "5",
+        "satsun": ""
     },
-    week18: {
-        mon: "5", 
-        tue: "7",
-        wed: "",
-        thur: "8",
-        fri: "3",
-        satsun: ""
+    "week18": {
+        "mon": "5", 
+        "tue": "7",
+        "wed": "",
+        "thur": "8",
+        "fri": "3",
+        "satsun": ""
     }
 }

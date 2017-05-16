@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
       classMethods: {
         associate: function(models) {
           //each staff is part of a user. period
-          Vacation.belongsTo(models.Staff, {
+          Vacation.belongsTo(models.User, {
             foreignKey: {
               allowNull: false
             }
