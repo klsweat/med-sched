@@ -7,10 +7,10 @@ module.exports = function(app) {
 
 	console.log('html-routes hit');
 
-	app.get("/", function(req, res) {
+	app.get('/', function(req, res) {
 
 	    console.log('/ hit')
-	    res.render('login');
+	    res.redirect('/login');
 	});
 
 	app.get('/matrix', isAuthenticated, function(req, res) {
