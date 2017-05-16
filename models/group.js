@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) { 
   var Group = sequelize.define("Group", {
-    group: {
+    userType: {
       type: DataTypes.STRING,
       allowNull: false
     }
