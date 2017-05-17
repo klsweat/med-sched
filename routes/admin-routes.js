@@ -18,7 +18,7 @@ module.exports = function(app) {
 		
 	});
 
-	app.get('/admin/vacations', isAuthenticated, isAdmin, function(req, res){
+	app.get('/admin/vacations', isAuthenticated, isScheduler, function(req, res){
 		// if(req.user.group !== 'admin'){
 		// 	res.redirect('/');
 		// }

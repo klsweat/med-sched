@@ -31,8 +31,9 @@ module.exports = function(app) {
 		// if (!req.user) {
 		// 	res.redirect('/');
 		// }
-		db.Vacation.findAll({where: {UserId: req.user.id}})
+		db.VacationRequest.findAll({where: {UserId: req.user.id}})
 				   .then( function( data ){
+					   console.log("VACAY DATAY:", data);
 				   	 res.render('vacation', {vacation: data});
 				   }).catch(function(error){
 				   	 console.log(error.message);
