@@ -8,8 +8,8 @@
                 {{#each vacation}}
                 <div class="card blue-grey lighten-1">
                     <div class="card-content white-text">
-                        <span class="card-title">{{status}}</span>
-                        <p>User:  </p>
+                        <span class="card-title">{{User.Status.status}}</span>
+                        <p>User:  {{User.first_name}} {{User.last_name}}</p>
                         <p>Start: {{start_date}}&nbsp&nbsp&nbsp 
                         End: {{end_date}}</p>
                         <p>Comment: {{comment}}</p>

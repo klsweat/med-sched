@@ -44,7 +44,7 @@ module.exports = function(app) {
 		// if (!req.user) {
 		// 	res.redirect('/');
 		// }
-		db.User.findOne({where: {id: req.user.id}})
+		db.User.findOne({where: {id: req.user.id}, include: [db.Group, db.Status, db.Partner]})
            .then( function( data ){
 			   	  res.render('account', {user: data});
 			  }).catch(function(error){

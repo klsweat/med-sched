@@ -22,8 +22,13 @@ module.exports = function(app) {
 		// if(req.user.group !== 'admin'){
 		// 	res.redirect('/');
 		// }
-		db.VacationRequest.findAll({ })
+		db.VacationRequest.findAll({include: [{
+										model: db.User,
+										As: 'User',
+										include: [db.Status, db.Partner]}
+										]})
 						  .then( function( data ) {
+						  	 // res.json(data);
 						  	 res.render('vacationAdmin', {vacation: data});
 						  }).catch( function(error) {
 						  	 console.log(error.message);
