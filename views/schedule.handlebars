@@ -4,6 +4,14 @@
     <div class="input-field col s12 l8 offset-l2">
         <div class="row">
             <p>Insert Schedule</p>
+            {{#each status}}
+            	{{@key}}<br>
+				{{#each this}}
+					{{first_name}}<br>
+            	{{/each}}
+            	<hr>
+            {{/each}}
+        </div>
         </div>
     </div>
 </div>
