@@ -17,10 +17,18 @@
   },
   "homepage": "https://github.com/dusterdieck/med-sched#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.1",
+    "bootstrap-table": "^1.11.2",
     "express": "^4.15.2",
     "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.2",
+    "method-override": "^2.3.8",
+    "moment": "^2.18.1",
     "mysql": "^2.13.0",
-    "sequelize": "^3.30.4"
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "sequelize": "^3.30.4",
+    "sprintf": "^0.1.5"
   }
 }

@@ -12,8 +12,8 @@ module.exports = function(sequelize, DataTypes) {
       classMethods: {
         associate: function(models) {
           //each staff is part of a user. period
-          Partner.hasMany(models.Staff, {
-            as: 'Staff'
+          Partner.hasMany(models.User, {
+            as: 'User'
           });
 
         }
