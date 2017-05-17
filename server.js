@@ -8,7 +8,9 @@ const express = require("express"),
 	  bodyParser = require("body-parser"),
 	  methodOverride = require("method-override"),
 	  path = require('path'),
-	  db = require("./models"); // Requiring our models for syncing
+	  session = require("express-session"),
+	  db = require("./models"),// Requiring our models for syncing
+	  passport = require('./config/passport'); //requiring passport as we've set it up for session stuff
 
 // Sets up the Express App
 // =============================================================
@@ -30,6 +32,11 @@ const exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+// We need to use sessions to keep track of our user's login status
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session()); 
 
 // Routes =============================================================
 

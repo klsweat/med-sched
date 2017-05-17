@@ -11,22 +11,22 @@ module.exports = function(app) {
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
     
-    res.redirect("/");
+    res.redirect("/matrix");
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/add-user", function(req, res) {
-    console.log(req.body);
+    console.log('adding user', req.body);
     db.User.create(
         req.body
     ).then( function(data) {
-      res.json(data);
+      
       res.redirect('/add-user');
     }).catch(function(err) {
       console.log(err.message);
-      res.send(400);
+      res.sendStatus(400);
     });
   });
 

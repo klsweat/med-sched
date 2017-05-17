@@ -1,7 +1,8 @@
 // Requiring our custom middleware for checking if a user is logged in
 // and our sequelize models
 const isAuthenticated = require("../config/middleware/isAuthenticated"),
-	  db = require('../models');
+	  db = require('../models'),
+	  moment = require('moment');
 
 module.exports = function(app) {
 
@@ -32,12 +33,15 @@ module.exports = function(app) {
 	});
 
 	app.post('/vacation', isAuthenticated, function(req, res) {
-		db.Vacation.create( req.body )
+		req.body.start_date =  moment(req.body.start_date).format('YYYY-MM-DD') ;
+		req.body.end_date =  moment(req.body.end_date).format('YYYY-MM-DD') ;
+		db.VacationRequest.create( req.body )
 				   .then( function( data ) {
 				   	 res.redirect('/vacations');
 				   }).catch( function( error ) {
 				   	 console.log(error.message);
 				   });
+		
 	});
 
 

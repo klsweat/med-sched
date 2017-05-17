@@ -10,7 +10,7 @@ module.exports = function(app) {
 	app.get('/admin', isAuthenticated, isScheduler, function(req, res){
 		let admin = {admin: false}
 
-		if( req.user.Group.type === 'admin') {
+		if( req.user.Group.userType === 'admin') {
 			admin.admin = true;
 		}
 		
@@ -31,7 +31,7 @@ module.exports = function(app) {
 
 	});
 
-	app.get('/admin/add-user', isAuthenticated, isAdmin, function( req, res ) {
+	app.get('/admin/add-user', function( req, res ) {
 		let dataObj = {};
 
 		db.Partner.findAll({})
@@ -45,6 +45,11 @@ module.exports = function(app) {
 				  	 	}).catch( function( error ){ console.log(error.message); res.send(400) });
 				  	 }).catch( function( error ){ console.log(error.message); res.send(400) });
 				  }).catch( function( error ){ console.log(error.message); res.send(400) });
+	});
+
+	app.get('/admin/add-partner', isAuthenticated, isAdmin, function( req, res ) {
+
+		res.render('add-partner');
 	});
 
 	app.put('/admin/vacations', isAuthenticated, isAdmin, function( req, res ) {
