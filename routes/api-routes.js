@@ -48,6 +48,7 @@ module.exports = function(app) {
 	app.put('/account', isAuthenticated, function(req, res) {
 		db.User.update( req.body, {where: {id: req.body.id }})
 			   .then( function( data ){
+					 console.log( data );
 			   	 res.redirect('/account');
 			   }).catch( function( error ) {
 			   	 console.log(error.message);

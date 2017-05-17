@@ -46,6 +46,7 @@ module.exports = function(app) {
 		// }
 		db.User.findOne({where: {id: req.user.id}})
 				   .then( function( data ){
+					   console.log(data);
 				   	 res.render('account', {user: data});
 				   }).catch(function(error){
 				   	 console.log(error.message);
