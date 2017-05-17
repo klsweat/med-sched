@@ -9,7 +9,7 @@ var projects = {
         data: function(req, res) {
 
             var offset = +req.query.offset || 0,
-                limit = +req.query.limit || 20,
+                limit = +req.query.limit || 30,
                 search = req.query.search,
                 name = req.query.sort,
                 order = req.query.order || 'asc',
@@ -21,6 +21,8 @@ var projects = {
                     total: +req.query.total || 19,
                     rows: []
                 };
+
+
 
         var matrix =  [{
             
