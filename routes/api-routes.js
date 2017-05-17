@@ -41,6 +41,7 @@ module.exports = function(app) {
 	app.post('/vacation', isAuthenticated, function(req, res) {
 		req.body.start_date =  moment(req.body.start_date).format('YYYY-MM-DD') ;
 		req.body.end_date =  moment(req.body.end_date).format('YYYY-MM-DD') ;
+		req.body.UserId = req.user.id;
 		db.VacationRequest.create( req.body )
 				   .then( function( data ) {
 				   	 res.redirect('/vacations');
@@ -54,6 +55,7 @@ module.exports = function(app) {
 	app.put('/account', isAuthenticated, function(req, res) {
 		db.User.update( req.body, {where: {id: req.user.id }})
 			   .then( function( data ){
+					 console.log( data );
 			   	 res.redirect('/account');
 			   }).catch( function( error ) {
 			   	 console.log(error.message);

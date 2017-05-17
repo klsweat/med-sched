@@ -45,11 +45,11 @@ module.exports = function(app) {
 		// 	res.redirect('/');
 		// }
 		db.User.findOne({where: {id: req.user.id}})
-			   .then( function( data ){
-			   	 res.render('account', {user: data});
-			   }).catch(function(error){
-			   	 console.log(error.message);
-				res.sendStatus(400);
+           .then( function( data ){
+			   	  res.render('account', {user: data});
+			  }).catch(function(error){
+			   	  console.log(error.message);
+				    res.sendStatus(400);
 			   });
 	});
 
