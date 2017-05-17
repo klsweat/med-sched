@@ -19,7 +19,6 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.1",
-    "bootstrap-material-design": "^0.5.10",
     "bootstrap-table": "^1.11.2",
     "express": "^4.15.2",
     "express-handlebars": "^3.0.0",
