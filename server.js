@@ -27,6 +27,8 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(path.join(__dirname, "./public")));
 
+app.get('/examples/:project/:func', require('./config/examples'));
+
 // Set Handlebars.
 const exphbs = require("express-handlebars");
 
