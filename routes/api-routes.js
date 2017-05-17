@@ -2,33 +2,39 @@
 // and our sequelize models
 const isAuthenticated = require("../config/middleware/isAuthenticated"),
 	  db = require('../models'),
-	  moment = require('moment');
+	  moment = require('moment'),
+	  fs = require('fs');
 
 module.exports = function(app) {
 
 	app.get("/api/matrix", function(req, res){
-		if (!req.user) {
-	      // The user is not logged in, send back an empty object
-	      res.json({});
-	    }
-	    else {
-			fs.readdir('../matrix', function(err, files){
+		// if (!req.user) {
+	 //      // The user is not logged in, send back an empty object
+	 //      res.json({});
+	 //    }
+	 //    else {
+			fs.readdir('./matrix', function(err, files){
+				console.log('files', files)
 				files.sort( alphanum );
 				files.reverse();
 				
-				fs.readFile( files[0], function(err, data){
-					res.json( data);
+				fs.readFile( './matrix/'+files[0], function(err, data){
+					console.log(data);
+					res.json( JSON.parse(data) );
 
 				});
 			});
-		}
+		//}
 	});	 
 
 	app.post('/api/matrix', function(req, res) {
-		let filename = 'Matrix_' + Date.now();
+		let filename = './matrix/Matrix_' + Date.now() + '.matrix';
 
 		fs.writeFile(filename, req.body, { flag: "wx" }, function(err) {
-		      res.end();
+			  if(err) {
+			  	res.json('FAILURE');
+			  }
+		      res.json('Successfully wrote ' + filename );
 		  });
 	});
 
@@ -47,7 +53,7 @@ module.exports = function(app) {
 
 
 	app.put('/account', isAuthenticated, function(req, res) {
-		db.User.update( req.body, {where: {id: req.body.id }})
+		db.User.update( req.body, {where: {id: req.user.id }})
 			   .then( function( data ){
 					 console.log( data );
 			   	 res.redirect('/account');
