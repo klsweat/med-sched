@@ -35,6 +35,7 @@ module.exports = function(app) {
 	app.post('/vacation', isAuthenticated, function(req, res) {
 		req.body.start_date =  moment(req.body.start_date).format('YYYY-MM-DD') ;
 		req.body.end_date =  moment(req.body.end_date).format('YYYY-MM-DD') ;
+		req.body.UserId = req.user.id;
 		db.VacationRequest.create( req.body )
 				   .then( function( data ) {
 				   	 res.redirect('/vacations');
