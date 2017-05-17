@@ -23,7 +23,7 @@ module.exports = function(app) {
         req.body
     ).then( function(data) {
       
-      res.redirect('/add-user');
+      res.redirect('/admin/add-user');
     }).catch(function(err) {
       console.log(err.message);
       res.sendStatus(400);
