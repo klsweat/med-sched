@@ -1,6 +1,7 @@
 // Requiring our custom middleware for checking if a user is logged in
 // and our sequelize models
 const isAuthenticated = require("../config/middleware/isAuthenticated"),
+	  isAdmin = require("../config/middleware/isAdmin"),
 	  db = require('../models'),
 	  moment = require('moment'),
 	  fs = require('fs');
@@ -52,7 +53,7 @@ module.exports = function(app) {
 	});
 
 
-	app.put('/account', function(req, res) {
+	app.put('/account', isAuthenticated, function(req, res) {
 		db.User.update( req.body, {where: {id: req.user.id }})
 			   .then( function( data ){
 					 console.log( data );
@@ -67,7 +68,18 @@ module.exports = function(app) {
 				 .then( function(data) {
 				 	res.redirect('/pop-matrix');
 				 });
-	})
+	});
+
+	app.put('/api/matrix', isAuthenticated, isAdmin, function(req, res){
+
+                    db.Matrix.update( req.body.newData, {where: {Pos: req.body.Pos } } )
+                    		 .then( function(data){
+                    		 	res.json('Success')
+                    	   }).catch( function( error ) {
+                    		 	console.log(error);
+                    		 	res.sendStatus(400);
+                    	   });
+                });
 }
 
 
