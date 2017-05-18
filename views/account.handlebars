@@ -12,7 +12,7 @@
                 </div>
                 <div class="card-reveal">
                     <span class="card-title activator greytext text-darken-3">Update Account Details<i class="material-icons right">close</i></span>
-                    <form class="col s12" action="/account/:id" method="POST">
+                    <form class="col s12" action="/account?_method=PUT" method="POST">
                     <div class="row">
                         <div class="col s6">
                             <input name="first_name" type="text" class="validate" value="{{user.first_name}}">

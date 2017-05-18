@@ -52,7 +52,7 @@ module.exports = function(app) {
 	});
 
 
-	app.put('/account', isAuthenticated, function(req, res) {
+	app.put('/account', function(req, res) {
 		db.User.update( req.body, {where: {id: req.user.id }})
 			   .then( function( data ){
 					 console.log( data );
