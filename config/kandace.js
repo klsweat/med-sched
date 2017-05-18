@@ -1,4 +1,30 @@
-[{
+/**
+ * @author zhixin wen <wenzhixin2010@gmail.com>
+ * examples for projects
+ */
+
+var projects = {
+    bootstrap_table: {
+
+        data: function(req, res) {
+
+            var offset = +req.query.offset || 0,
+                limit = +req.query.limit || 30,
+                search = req.query.search,
+                name = req.query.sort,
+                order = req.query.order || 'asc',
+
+                i,
+                max = offset + limit,
+                rows = [],
+                result = {
+                    total: +req.query.total || 19,
+                    rows: []
+                };
+
+
+
+        var matrix =  [{
             
                 week: "week01",
                 mon: "12", 
@@ -167,4 +193,69 @@
                 fri: "11",
                 satsun: ""
 
-        }]
+        }]; 
+
+
+            for (i = 0; i < matrix.length; i++) {
+                //console.log(matrix.length);
+                //console.log(matrix[i].week);
+                rows.push({
+                    id : i,
+                    week: matrix[i].week,
+                    mon: matrix[i].mon, 
+                    tue: matrix[i].tue,
+                    wed: matrix[i].wed,
+                    thur: matrix[i].thur,
+                    fri: matrix[i].fri,
+                    satsun: matrix[i].satsun,
+                    order: matrix[i].order
+                    //name: 'Item ' + i,
+                   // price: '$' + i
+                });
+
+            
+            }
+
+
+            if (search) {
+                rows = rows.filter(function(item) {
+                    return item.week.indexOf(search) !== -1;
+                });
+            }
+            if (['id', 'week', 'price'].indexOf(name) !== -1) {
+                rows = rows.sort(function(a, b) {
+                    var c = a[name],
+                        d = b[name];
+
+                    if (name === 'order') {
+                        c = +c.substring(1);
+                        d = +d.substring(1);
+                    }
+                    if (c < d) {
+                        return order === 'asc' ? -1 : 1;
+                    }
+                    if (c > d) {
+                        return order === 'asc' ? 1 : -1;
+                    }
+                    return 0;
+                });
+            }
+
+            if (max > rows.length) {
+                max = rows.length;
+            }
+
+            matrix.length = rows.length;
+            for (i = offset; i < max; i++) {
+                result.rows.push(rows[i]);
+            }
+            res.json(result);
+        }
+    }
+};
+
+module.exports = function(req, res) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+    projects[req.params.project][req.params.func](req, res);
+};
