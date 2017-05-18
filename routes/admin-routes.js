@@ -52,7 +52,7 @@ module.exports = function(app) {
 				  }).catch( function( error ){ console.log(error.message); res.send(400) });
 	});
 
-	app.get('/admin/users', function( req, res ) {
+	app.get('/admin/users', isAuthenticated, function( req, res ) {
 		let dataObj = {};
 
 		db.Partner.findAll({})
@@ -62,9 +62,10 @@ module.exports = function(app) {
 				  	 	dataObj.Group = data;
 				  	 	db.Status.findAll({}).then(function(data){
 				  	 		dataObj.Status = data;		  	 		
-							db.Users.findAll({ include: [db.Group, db.Status, db.Partner] })
+							db.User.findAll({ include: [db.Group, db.Status, db.Partner] })
 									.then( function( data ) {
 									  	dataObj.User = data;
+										  console.log (dataObj);
 									  	if(req.user.Group.userType === 'admin'){
 									  		dataObj.admin = true;
 									  	} else {
