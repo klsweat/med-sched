@@ -1,6 +1,9 @@
 
     <script src="assets/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -20,9 +23,9 @@
            data-toolbar="#toolbar"
            data-search="false"
            data-show-refresh="true"
-           data-show-toggle="false"
+           data-show-toggle="true"
            data-show-columns="false"
-           data-show-export="false"
+           data-show-export="true"
            data-detail-view="false"
            data-detail-formatter="detailFormatter"
            data-minimum-count-columns="2"
@@ -35,8 +38,15 @@
            data-url="/examples/bootstrap_table/data"
            data-response-handler="responseHandler">
     </table>
+
+    <div id="whatevs">
+        <button id="test" class="btn btn-danger">
+            <i class="glyphicon glyphicon-primary"></i> Test
+        </button>
+    </div>
 </div>
 
+    
 <script>
     var $table = $('#table'),
         $remove = $('#remove'),
@@ -53,7 +63,8 @@
                         rowspan: 1,
                         align: 'center',
                         valign: 'middle'
-                    }, {
+                    }, 
+                    {
                         title: 'Pos',
                         field: 'Pos',
                         rowspan: 1,
@@ -185,6 +196,29 @@
                 height: getHeight()
             });
         });
+
+        $('#test').click(function(){
+            var data = $table.bootstrapTable('getData');
+            // console.log(data);
+            for( var i in data ){
+                var updateObject = { newData: {
+                                        Mon: data[i].Mon,
+                                        Tues: data[i].Tues,
+                                        Wed: data[i].Wed,
+                                        Thur: data[i].Thur,
+                                        Fri: data[i].Fri,
+                                        SatSun: data[i].SatSun
+                                      },
+                                      Pos: data[i].Pos
+                                   }
+                console.log(updateObject);
+                $.put('/api/matrix', updateObject, function(blah){
+                    blah;
+                })
+
+                db.Matrix.update( req.newData, {where: {Pos: req.Pos }})
+            }
+        })
     }
 
     
