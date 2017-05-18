@@ -28,7 +28,7 @@ module.exports = function(app) {
 										include: [db.Status, db.Partner]}
 										]})
 						  .then( function( data ) {
-						  	 // res.json(data);
+						  	  console.log( "Here is the VACAY DATAY: \n ----------- \n", data[0].start_date );
 						  	 res.render('vacationAdmin', {vacation: data});
 						  }).catch( function(error) {
 						  	 console.log(error.message);
