@@ -84,6 +84,8 @@ module.exports = function(app) {
 				});
 	});
 
-
+	app.get('/pop-matrix', function(req, res) {
+		res.render('pop-matrix');
+	})
 
 }

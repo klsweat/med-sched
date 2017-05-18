@@ -52,7 +52,7 @@ module.exports = function(app) {
 	});
 
 
-	app.put('/account', isAuthenticated, function(req, res) {
+	app.put('/account', function(req, res) {
 		db.User.update( req.body, {where: {id: req.user.id }})
 			   .then( function( data ){
 					 console.log( data );
@@ -61,6 +61,13 @@ module.exports = function(app) {
 			   	 console.log(error.message);
 			   });
 	});
+
+	app.post('/api/new-matrix', function(req, res) {
+		db.Matrix.create( req.body )
+				 .then( function(data) {
+				 	res.redirect('/pop-matrix');
+				 });
+	})
 }
 
 
