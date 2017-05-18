@@ -71,7 +71,7 @@ module.exports = function(app) {
 									  	} else {
 									  		dataObj.admin = false;
 									  	}
-									  	res.render('update-users', dataObj);
+									  	res.render('users', dataObj);
 						   }).catch( function( error ){ console.log(error.message); res.send(400) });
 				  	 	}).catch( function( error ){ console.log(error.message); res.send(400) });
 				  	 }).catch( function( error ){ console.log(error.message); res.send(400) });
