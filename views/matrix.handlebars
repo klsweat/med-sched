@@ -212,11 +212,17 @@
                                       Pos: data[i].Pos
                                    }
                 console.log(updateObject);
-                $.put('/api/matrix', updateObject, function(blah){
-                    blah;
-                })
 
-                db.Matrix.update( req.newData, {where: {Pos: req.Pos }})
+                $.ajax({
+                    url: '/api/matrix', // your api url
+                    // jQuery < 1.9.0 -> use type
+                    // jQuery >= 1.9.0 -> use method
+                    method: 'PUT', // method is any HTTP method
+                    data: updateObject, // data as js object
+                    success: function( data ) { console.log( data ); }
+                });
+
+                
             }
         })
     }
