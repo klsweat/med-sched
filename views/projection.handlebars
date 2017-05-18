@@ -3,7 +3,32 @@
 <div class="row">
     <div class="input-field col s12 l8 offset-l2">
         <div class="row">
-            <p>Insert Projection</p>
+            <h3>Insert Projection</h3>
+            {{#if admin}}
+            <!--button-->
+            {{/if}}
+            <table>
+                <thead>
+                    <tr>
+                        {{#each user}}
+                        <th>
+                            {{@val}}
+                        </th>
+                        {{/each}}
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each week}}
+                    <tr>
+                        {{#each this}}
+                        <td>
+                            {{put a number up in here}}
+                        </td>
+                        {{/each}}
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
