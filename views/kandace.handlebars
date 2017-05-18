@@ -12,22 +12,22 @@
 <div class="container">
     <h1>The Matrix</h1>
     <div id="toolbar">
-        {{!-- <button id="remove" class="btn btn-danger" disabled>
+        <button id="remove" class="btn btn-danger" disabled>
             <i class="glyphicon glyphicon-remove"></i> Delete
-        </button> --}}
+        </button>
     </div>
     <table id="table"
            data-toolbar="#toolbar"
-           data-search="false"
+           data-search="true"
            data-show-refresh="true"
-           data-show-toggle="false"
-           data-show-columns="false"
-           data-show-export="false"
-           data-detail-view="false"
+           data-show-toggle="true"
+           data-show-columns="true"
+           data-show-export="true"
+           data-detail-view="true"
            data-detail-formatter="detailFormatter"
            data-minimum-count-columns="2"
-           data-show-pagination-switch="false"
-           data-pagination="false"
+           data-show-pagination-switch="true"
+           data-pagination="true"
            data-id-field="id"
            data-page-list="[ALL]"
            data-show-footer="false"
@@ -50,95 +50,96 @@
                     {
                         field: 'state',
                         checkbox: true,
-                        rowspan: 1,
+                        rowspan: 2,
                         align: 'center',
                         valign: 'middle'
                     }, {
-                        title: 'Pos',
-                        field: 'Pos',
-                        rowspan: 1,
+                        title: 'Week',
+                        field: 'week',
+                        rowspan: 2,
                         align: 'center',
                         valign: 'middle',
-                        sortable: false
-                        // ,
-                        // footerFormatter: totalTextFormatter
-                    }, 
-                //     {
-                //         title: 'Item Detail',
-                //         colspan: 7,
-                //         align: 'center'
-                //     }
-                // ],
-                // [
-                    {
-                        field: 'Mon',
-                        title: 'Monday',
-                        rowspan: 1,
-                        sortable: false,
-                        editable: true,
-                        // footerFormatter: totalNameFormatter,
-                        align: 'center'
+                        sortable: true,
+                        footerFormatter: totalTextFormatter
                     }, {
-                        field: 'Tues',
-                        title: 'Tuesday',
-                        rowspan: 1,
-                        sortable: false,
-                        align: 'center',
-                        editable: true
-                        // ,
-                        // footerFormatter: totalPriceFormatter
-                    }, {
-                        field: 'Wed',
-                        title: 'Wednesday',
-                        rowspan: 1,
-                        align: 'center',
-                        sortable: false,
-                        editable: true,
+                        title: 'Item Detail',
+                        colspan: 7,
                         align: 'center'
-                       // events: operateEvents,
-                        //formatter: operateFormatter
-                    },
-                    {
-                        field: 'Thur',
-                        title: 'Thursday',
-                        rowspan: 1,
-                        align: 'center',
-                        sortable: false,
-                        editable: true,
-                        align: 'center'
-                       // events: operateEvents,
-                        //formatter: operateFormatter
-                    },
-                    {
-                        field: 'Fri',
-                        title: 'Friday',
-                        rowspan: 1,
-                        align: 'center',
-                        sortable: false,
-                        editable: true,
-                        align: 'center'
-                       // events: operateEvents,
-                        //formatter: operateFormatter
-                    },
-                    {
-                        field: 'SatSun',
-                        title: 'Sat/Sun',
-                        rowspan: 1,
-                        align: 'center',
-                        sortable: false,
-                        editable: true,
-                        align: 'center'
-                       // events: operateEvents,
-                        //formatter: operateFormatter
                     }
-                    ,
+                ],
+                [
                     {
-                        field: 'User.first_name',
-                        title: 'Person',
-                        rowspan: 1,
+                        field: 'mon',
+                        title: 'Monday',
+                        sortable: true,
+                        editable: true,
+                        footerFormatter: totalNameFormatter,
+                        align: 'center'
+                    }, {
+                        field: 'tue',
+                        title: 'Tuesday',
+                        sortable: true,
                         align: 'center',
-                        sortable: false,
-                        editable: false
+                        editable: {
+                            type: 'text',
+                            title: 'Item Price',
+                            validate: function (value) {
+                                value = $.trim(value);
+                                if (!value) {
+                                    return 'This field is required';
+                                }
+                                if (!/^\$/.test(value)) {
+                                    return 'This field needs to start width $.'
+                                }
+                                var data = $table.bootstrapTable('getData'),
+                                    index = $(this).parents('tr').data('index');
+                                console.log(data[index]);
+                                return '';
+                            }
+                        },
+                        footerFormatter: totalPriceFormatter
+                    }, {
+                        field: 'wed',
+                        title: 'Wednesday',
+                        align: 'center',
+                        sortable: true,
+                        editable: true
+                       // events: operateEvents,
+                        //formatter: operateFormatter
+                    },
+                    {
+                        field: 'thur',
+                        title: 'Thursday',
+                        align: 'center',
+                        sortable: true,
+                        editable: true
+                       // events: operateEvents,
+                        //formatter: operateFormatter
+                    },
+                    {
+                        field: 'fri',
+                        title: 'Friday',
+                        align: 'center',
+                        sortable: true,
+                        editable: true
+                       // events: operateEvents,
+                        //formatter: operateFormatter
+                    },
+                    {
+                        field: 'satsun',
+                        title: 'Sat/Sun',
+                        align: 'center',
+                        sortable: true,
+                        editable: true
+                       // events: operateEvents,
+                        //formatter: operateFormatter
+                    },
+                    {
+                        field: 'order',
+                        title: 'Order',
+                        align: 'center',
+                        sortable: true,
+                        editable: true
                        // events: operateEvents,
                         //formatter: operateFormatter
                     }
@@ -174,7 +175,7 @@
         $remove.click(function () {
             var ids = getIdSelections();
             $table.bootstrapTable('remove', {
-                field: 'Pos',
+                field: 'id',
                 values: ids
             });
 

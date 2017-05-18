@@ -27,7 +27,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(path.join(__dirname, "./public")));
 
-app.get('/examples/:project/:func', require('./config/examples'));
+
 
 // Set Handlebars.
 const exphbs = require("express-handlebars");
@@ -52,6 +52,14 @@ require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 require("./routes/admin-routes.js")(app);
 require("./routes/passport-routes.js")(app);
+
+//route for editable matrix table
+app.get('/examples/:project/:func', require('./config/examples'));
+
+//route that redirects traffic to root if no route is found
+app.get('*', function(req, res) {
+	res.redirect('/');
+});
 
 // Syncing our sequelize models and then starting our express app
 db.sequelize.sync().then(function() {
