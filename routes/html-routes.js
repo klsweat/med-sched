@@ -13,10 +13,13 @@ module.exports = function(app) {
 	    res.redirect('/schedule');
 	});
 
-	app.get('/matrix', isAuthenticated, function(req, res) {
+	app.get('/matrix',  function(req, res) {
 		console.log('/matrix hit');
+
 	 	res.render('matrix');
 	 });
+
+	
 
 	app.get("/login", function(req, res) {
     // If the user already has an account send them to the members page

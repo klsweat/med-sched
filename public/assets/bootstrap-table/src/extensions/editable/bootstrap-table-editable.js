@@ -120,11 +120,11 @@
                         oldValue = row[column.field];
 
                         
-                        console.log("index: " + index);
-                        console.log("row" + row);
-                        console.log("oldValue" + oldValue);
-                        console.log("data" + data);
-                        console.log("column.field" + column.field);
+                       // console.log("index: " + index);
+                       // console.log("row" + row);
+                       // console.log("oldValue" + oldValue);
+                       // console.log("data" + data);
+                       // console.log("column.field" + column.field);
                         var columnField = column.field;
 
                         var newValue = params.submitValue;
@@ -132,24 +132,32 @@
                     $(this).data('value', params.submitValue);
                     row[column.field] = params.submitValue;
                     that.trigger('editable-save', column.field, row, oldValue, $(this));
-                    console.log("this is DATA: " + JSON.stringify(data));
+                    //console.log("this is DATA: " + JSON.stringify(data));
+                    var newData = JSON.stringify(data);
+					var currentURL = window.location.origin;
+                    console.log(currentURL);
 
-                    var matrix = JSON.stringify(data);
-                  
+					 // This line is the magic. It"s very similar to the standard ajax function we used.
+                    // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+                    // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+                    // depending on if a tables is available or not.
+                    var API_URL = 'http://' + location.host + '/api/matrix';
 
-                   //Build an object which matches the structure of our view data class
-                    $(function () {
-                        $.ajax({
-                            type: "POST",
-                            data : data,
-                            url: "examples/bootstrap_table/data",
-                            contentType: "application/json"
-                        }).done(function(res, error) {
-                            console.log(res);
-                            if (error) throw error; 
-                        });
-                    });
-                
+$.post("api/matrix", newData, function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+    }, "json");
+                // $body.post("url:" + API_URL, newData, function(data) {
+
+                            // If a table is available... tell user they are booked.
+                        //    if (data) {
+                        //        alert("Yay! You are officially booked!");
+                        //    }
+                            // If a table is available... tell user they on the waiting list.
+                        //    else {
+                        //        alert("Sorry you are on the wait list");
+                        //    }
+
+                 //    });
 
                     that.resetFooter();
 

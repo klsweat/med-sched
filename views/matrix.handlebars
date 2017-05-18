@@ -173,6 +173,10 @@
         $table.on('all.bs.table', function (e, name, args) {
             console.log("all . bs. table");
             console.log(name, args);
+            // Run Queries!
+            // ==========================================
+            runTableQuery();
+
         });
     
       
@@ -322,5 +326,21 @@
     }
 
 
+    // In this code, jQuery is used to "download" the data from our server
+    // We then dynamically display this content in our table. This is very similar to the group projects you just completed.
+    // It's also very similar to the NYT search application. In fact, I copied a ton of code from there.
+    function runTableQuery() {
+
+      // Here we get the location of the root page.
+      // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
+      var currentURL = window.location.origin;
+      console.log("currentURL " + currentURL);
+    
+
+   
+    }
+
+
+    
   
 </script>

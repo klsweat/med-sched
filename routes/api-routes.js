@@ -1,36 +1,39 @@
 // Requiring our custom middleware for checking if a user is logged in
 // and our sequelize models
+var tableData = require("../public/data/tableData");
+
 const isAuthenticated = require("../config/middleware/isAuthenticated"),
 	  db = require('../models'),
 	  moment = require('moment');
 
 module.exports = function(app) {
 
-	app.get("/api/matrix", function(req, res){
+
+  app.get("/api/matrix", function(req, res) {
 		if (!req.user) {
 	      // The user is not logged in, send back an empty object
-	      res.json({});
+    		res.json(tableData);
 	    }
-	    else {
-			fs.readdir('../matrix', function(err, files){
-				files.sort( alphanum );
-				files.reverse();
-				
-				fs.readFile( files[0], function(err, data){
-					res.json( data);
+  });
 
-				});
-			});
-		}
-	});	 
-
+ 
 	app.post('/api/matrix', function(req, res) {
-		let filename = 'Matrix_' + Date.now();
-
-		fs.writeFile(filename, req.body, { flag: "wx" }, function(err) {
-		      res.end();
-		  });
+		
+		var obj = {};
+		console.log('body: ' + JSON.stringify(req.body));
+		res.send(req.body);
+		tableData.push(req.body);
+    res.json(true);
+		
+		
 	});
+
+	app.post('/examples/:project/:func', function(req, res){
+		var obj = {};
+		console.log('body: ' + JSON.stringify(req.body));
+		res.send(req.body);
+	});
+
 
 	app.post('/vacation', isAuthenticated, function(req, res) {
 		req.body.start_date =  moment(req.body.start_date).format('YYYY-MM-DD') ;

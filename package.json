@@ -23,6 +23,8 @@
     "express": "^4.15.2",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.2",
+    "http": "0.0.0",
+    "http-proxy": "^1.16.2",
     "method-override": "^2.3.8",
     "moment": "^2.18.1",
     "mysql": "^2.13.0",

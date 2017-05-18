@@ -20,5 +20,9 @@
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
-  }
+  }, 
+  "name": "My extension",
+  "permissions": [
+    "http://localhost:8679/assets/bootstrap-table/src/extensions/editable/extension.json"
+  ]
 }

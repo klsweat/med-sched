@@ -17,6 +17,13 @@ const express = require("express"),
 const app = express(),
 	  PORT = process.env.PORT || 8679;
 
+var http = require('http');
+var httpProxy = require('http-proxy');
+
+var proxy = httpProxy.createProxyServer({
+    target : "http://localhost/",
+    agent: http.globalAgent
+});
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
@@ -46,6 +53,7 @@ require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 require("./routes/admin-routes.js")(app);
 require("./routes/passport-routes.js")(app);
+
 
 // Syncing our sequelize models and then starting our express app
 db.sequelize.sync().then(function() {
