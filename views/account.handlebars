@@ -9,10 +9,13 @@
                     <p>Email: {{user.email}}</p>
                     <p>Mobile: {{user.mobile}}</p>
                     <p>Employee Id: {{user.empID}}</p>
+                    <p>Hospital: {{user.Partner.location}}</p>
+                    <p>Call Status: {{user.Status.status}}</p>
+
                 </div>
                 <div class="card-reveal">
                     <span class="card-title activator greytext text-darken-3">Update Account Details<i class="material-icons right">close</i></span>
-                    <form class="col s12" action="/account/:id" method="POST">
+                    <form class="col s12" action="/account?_method=PUT" method="POST">
                     <div class="row">
                         <div class="col s6">
                             <input name="first_name" type="text" class="validate" value="{{user.first_name}}">
@@ -28,6 +31,7 @@
                         </div>
                         <div class="col s6">
                             <input name="mobile" type="tel" class="validate" value="{{user.mobile}}">
+                            
                         </div>
                     </div>
                     <button class="waves-effect waves-light btn" type="Submit">Submit</button>
