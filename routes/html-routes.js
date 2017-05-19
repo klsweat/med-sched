@@ -158,7 +158,7 @@ module.exports = function(app) {
 	// 	res.render('pop-matrix');
 	// });
 
-	app.get('/users', function( req, res ) {
+	app.get('/users', isAuthenticated, function( req, res ) {
 		let dataObj = {};
 
 		db.Partner.findAll({})
@@ -168,7 +168,7 @@ module.exports = function(app) {
 				  	 	dataObj.Group = data;
 				  	 	db.Status.findAll({}).then(function(data){
 				  	 		dataObj.Status = data;		  	 		
-							db.Users.findAll({ include: [db.Group, db.Status, db.Partner] })
+							db.User.findAll({ include: [db.Group, db.Status, db.Partner] })
 									.then( function( data ) {
 									  	dataObj.User = data;
 									  	if(req.user.Group.userType === 'admin'){
@@ -176,11 +176,11 @@ module.exports = function(app) {
 									  	} else {
 									  		dataObj.admin = false;
 									  	}
-									  	res.render('update-users', dataObj);
-						   }).catch( function( error ){ console.log(error.message); res.sendStatus(400) });
-				  	 	}).catch( function( error ){ console.log(error.message); res.sendStatus(400) });
-				  	 }).catch( function( error ){ console.log(error.message); res.sendStatus(400) });
-				  }).catch( function( error ){ console.log(error.message); res.sendStatus(400) })
+									  	res.render('users', dataObj);
+						   }).catch( function( error ){ console.log('1', error.message); res.sendStatus(400) });
+				  	 	}).catch( function( error ){ console.log('2',error.message); res.sendStatus(400) });
+				  	 }).catch( function( error ){ console.log('3',error.message); res.sendStatus(400) });
+				  }).catch( function( error ){ console.log('4',error.message); res.sendStatus(400) })
 
 
 	});	

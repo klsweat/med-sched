@@ -1,6 +1,6 @@
 <div class="row page-label">
         
-            <h4class="light" style="padding:20px;" >Contacts</h4>
+            <h4 class="light" style="padding:20px;" >Contacts</h4>
             {{#if admin}}
             {{#each User}}
             <div class="col m6">
@@ -36,6 +36,7 @@
                             
                         </div>
                     </div>
+                    <input name='id' value='{{this.id}}' type='hidden'>
                     <button class="waves-effect waves-light btn" type="Submit">Submit</button>
                     </form>
                 </div>

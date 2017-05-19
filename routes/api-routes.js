@@ -54,10 +54,13 @@ module.exports = function(app) {
 
 
 	app.put('/account', isAuthenticated, function(req, res) {
-		db.User.update( req.body, {where: {id: req.user.id }})
+		let updateid = req.body.id;
+		delete req.body.id;
+		db.User.update( req.body, {where: {id: updateid }})
 			   .then( function( data ){
 					 console.log( data );
-			   	 res.redirect('/account');
+			   	 //res.redirect('/account');
+			   	 res.redirect(req.get('referer'));
 			   }).catch( function( error ) {
 			   	 console.log(error.message);
 			   });
