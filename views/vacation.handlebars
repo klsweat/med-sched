@@ -12,7 +12,7 @@
                             <label for="start_date">Start Date</label>
                         </div>
                         <div class="col s6 input-field">
-                            <input class='datepicker' id="datepicker2" name="end_date" type="date" class="validate">
+                            <input class='datepickertwo' id="datepicker2" name="end_date" type="date" class="validate">
                             <label for="end_date">End Date</label>
                         </div>
                         <div class="col s12">
@@ -56,11 +56,23 @@
 
 <script>
     $(document).ready(function () {
-        $(".datepicker").pickadate({
+
+        $('input.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year
+            onSet: function() {
+                setTimeout(this.close, 0);
+            }
+        });
+        $("input.datepickertwo").pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year
             selectMonths: true, // Creates a dropdown to control month
             selectYears: 15 // Creates a dropdown of 15 years to control year
         });
+
     });
+
 
 
 </script>

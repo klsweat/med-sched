@@ -1,28 +1,30 @@
+<br>
+<br>
 <form class="col s12" action='/api/login' method='POST'>
     <div class="row page-label">
         <div class="col s12 l8 offset-l2">
-            <br>
-            <br>
-
-            <h4>Login</h4>
-
-            <!---------------------------------------------->
-            <div class="row">
-                <div class="input-field col s8 offset-s2">
-                    <i class="material-icons prefix">account_circle</i>
-                    <input name="email" type="text" class="validate" autofocus>
-                    <label for="email">Email</label>
+            <div class="card ">
+                <div class="card-tabs">
+                    <p>
+                        <h4 class="light" style="padding:20px;">Login</h4>
+                    </p>
                 </div>
-                <div class="input-field col s8 offset-s2">
-                    <i class="material-icons prefix">vpn_key</i>
-                    <input name="password" type="password" class="validate">
-                    <label for="password">Password</label>
+                <div class="card-action">
+                    <div class="row">
+                        <div class="input-field col s8 offset-s2">
+                            <i class="material-icons prefix" style="position:absolute; top: 10px;">account_circle</i>
+                            <input name="email" type="text" style="padding-left:10px;" class="validate" placeholder="Email" autofocus>
+                        </div>
+                        <div class="input-field col s8 offset-s2">
+                            <i class="material-icons prefix" style="position:absolute; top: 10px;">vpn_key</i>
+                            <input name="password" style="padding-left:10px;" type="password" placeholder="Password" class="validate">
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <!---------------------------------------------->
-            <div class="input-field col s12 l8 offset-l2">
-                <div class="row"><br>
-                    <button class="waves-effect waves-light btn" type="Submit">Submit</button>
+                <div class="card-action">
+                    <button class="waves-effect waves-light btn" type="Submit">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
                 </div>
             </div>
         </div>
