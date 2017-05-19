@@ -1,6 +1,7 @@
 // Requiring our custom middleware for checking if a user is logged in
 // and our sequelize models
 const isAuthenticated = require("../config/middleware/isAuthenticated"),
+	  isAdmin = require("../config/middleware/isAdmin"),
 	  notAuthenticated = require("../config/middleware/notAuthenticated"),
 	  db = require('../models');
 
@@ -79,21 +80,47 @@ module.exports = function(app) {
 	});
 
 	app.get('/projection', isAuthenticated, function( req, res ){
-		db.User.findAll({})
+		console.log('----','hit /projection','----');
+		db.User.findAll({ include: [db.Status, db.Partner] })
 			   .then(function(data){
-					//some stuff to be filled in
-					res.render( 'projection', {week: data} );
+			   		console.log('----','doing then function','----');
+			   		let len = data.length;
+					let header = {}, 
+						week = {};
+					data.sort( projectionSort );
+					for( let i =  0; i < len; i++){
+
+						if( data[i].StatusId ) {
+
+							console.log('----', data[i].StatusId, data[i].Status.status, data[i], '----');
+							header[ data[i].Status.status ] = header[ data[i].Status.status ] || [];
+							
+							header[ data[i].Status.status ].push( initialThis( data[i] ) );
+						}
+					}
+					console.log('header', header);
+					res.render( 'projection', {header: [], week: []} );
 				}).catch( function(error) {
+					console.log('----','this shiz errored','----');
 					console.log(error.message);
 					res.sendStatus(400);
 				});
+
+		//function to return uppercase initials of user's name
+		let initialThis = function( user ) {
+			return user.dataValues.first_name.charAt[0].toUpperCase() + user.dataValues.last_name.charAt[0].toUpperCase();
+		}
+		//function to sort array by object's id field
+		let projectionSort = function(a,b) {
+			return a.id - b.id;
+		}
 	});
 
 	app.get('/pop-matrix', isAdmin, function(req, res) {
 		res.render('pop-matrix');
 	});
 
-	app.get('/admin/users', function( req, res ) {
+	app.get('/users', function( req, res ) {
 		let dataObj = {};
 
 		db.Partner.findAll({})
@@ -121,3 +148,4 @@ module.exports = function(app) {
 	});	
 
 }
+
