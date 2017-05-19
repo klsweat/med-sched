@@ -47,43 +47,21 @@ module.exports = function(app) {
 				  	 	db.Status.findAll({}).then(function(data){
 				  	 		dataObj.Status = data;
 				  	 		res.render('add-user', dataObj);
-				  	 	}).catch( function( error ){ console.log(error.message); res.send(400) });
-				  	 }).catch( function( error ){ console.log(error.message); res.send(400) });
-				  }).catch( function( error ){ console.log(error.message); res.send(400) });
+				  	 	}).catch( function( error ){ console.log(error.message); res.sendStatus(400) });
+				  	 }).catch( function( error ){ console.log(error.message); res.sendStatus(400) });
+				  }).catch( function( error ){ console.log(error.message); res.sendStatus(400) });
 	});
 
-	app.get('/admin/users', isAuthenticated, function( req, res ) {
-		let dataObj = {};
-
-		db.Partner.findAll({})
-				  .then( function( data ) {
-				  	 dataObj.Partner = data;
-				  	 db.Group.findAll({}).then(function(data){
-				  	 	dataObj.Group = data;
-				  	 	db.Status.findAll({}).then(function(data){
-				  	 		dataObj.Status = data;		  	 		
-							db.User.findAll({ include: [db.Group, db.Status, db.Partner] })
-									.then( function( data ) {
-									  	dataObj.User = data;
-										  console.log (dataObj);
-									  	if(req.user.Group.userType === 'admin'){
-									  		dataObj.admin = true;
-									  	} else {
-									  		dataObj.admin = false;
-									  	}
-									  	res.render('users', dataObj);
-						   }).catch( function( error ){ console.log(error.message); res.send(400) });
-				  	 	}).catch( function( error ){ console.log(error.message); res.send(400) });
-				  	 }).catch( function( error ){ console.log(error.message); res.send(400) });
-				  }).catch( function( error ){ console.log(error.message); res.send(400) })
-
-
-	});
 
 	app.get('/admin/add-partner', isAuthenticated, isAdmin, function( req, res ) {
 
 		res.render('add-partner');
 	});
+
+	app.get('/admin/matrix', isAuthenticated, function(req, res) {	
+		console.log('/matrix hit');
+	 	res.render('matrix');
+	 });
 
 	app.put('/admin/vacations', isAuthenticated, isAdmin, function( req, res ) {
 		db.Vacation.update( req.body, {where: {id: req.body.id} })

@@ -71,15 +71,17 @@ module.exports = function(app) {
 	});
 
 	app.put('/api/matrix', isAuthenticated, isAdmin, function(req, res){
-
-                    db.Matrix.update( req.body.newData, {where: {Pos: req.body.Pos } } )
+				for(var i in req.body.data ){
+                    db.Matrix.update( req.body.data[i].newData, {where: {Pos: req.body.data[i].Pos } } )
                     		 .then( function(data){
-                    		 	res.json('Success')
+                    		 	return;
                     	   }).catch( function( error ) {
                     		 	console.log(error);
                     		 	res.sendStatus(400);
                     	   });
-                });
+				}
+				res.json('success');
+    });
 }
 
 

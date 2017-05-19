@@ -43,6 +43,7 @@
        <button class="waves-effect waves-light btn" onclick="Materialize.toast('Changes saved', 3000, 'rounded')"><i class="material-icons">save</i> SAVE </button>
        
     </div>
+
 </div>
 
 
@@ -96,6 +97,7 @@
 <script>
     
     // 'rounded' is the class I'm applying to the toast
+
     var $table = $('#table'),
         $remove = $('#remove'),
         selections = [];
@@ -135,6 +137,7 @@
                         rowspan: 1,
                         sortable: false,
                         editable: true,
+
                         // footerFormatter: totalNameFormatter,
                         align: 'center'
                     }, {
@@ -244,35 +247,8 @@
                 height: getHeight()
             });
         });
+        
 
-        $('#test').click(function(){
-            var data = $table.bootstrapTable('getData');
-            // console.log(data);
-            for( var i in data ){
-                var updateObject = { newData: {
-                                        Mon: data[i].Mon,
-                                        Tues: data[i].Tues,
-                                        Wed: data[i].Wed,
-                                        Thur: data[i].Thur,
-                                        Fri: data[i].Fri,
-                                        SatSun: data[i].SatSun
-                                      },
-                                      Pos: data[i].Pos
-                                   }
-                console.log(updateObject);
-
-                $.ajax({
-                    url: '/api/matrix', // your api url
-                    // jQuery < 1.9.0 -> use type
-                    // jQuery >= 1.9.0 -> use method
-                    method: 'PUT', // method is any HTTP method
-                    data: updateObject, // data as js object
-                    success: function( data ) { console.log( data ); }
-                });
-
-                
-            }
-        })
     }
 
     
@@ -352,6 +328,7 @@
             ],
             eachSeries = function (arr, iterator, callback) {
                 callback = callback || function () {};
+                console.log('callback',callback);
                 if (!arr.length) {
                     return callback();
                 }
@@ -404,6 +381,35 @@
         return undefined;
     }
 
+
+    $('#test').click(function(){
+            var data = $table.bootstrapTable('getData');
+            var updateArray = []
+            // console.log(data);
+            for( var i in data ){
+                var updateObject = { newData: {
+                                        Mon: data[i].Mon,
+                                        Tues: data[i].Tues,
+                                        Wed: data[i].Wed,
+                                        Thur: data[i].Thur,
+                                        Fri: data[i].Fri,
+                                        SatSun: data[i].SatSun
+                                      },
+                                      Pos: data[i].Pos
+                                   }
+                console.log(updateObject);
+                updateArray.push( updateObject );    
+            }
+            $.ajax({
+                    url: '/api/matrix', // your api url
+                    // jQuery < 1.9.0 -> use type
+                    // jQuery >= 1.9.0 -> use method
+                    method: 'PUT', // method is any HTTP method
+                    data: {data: updateArray}, // data as js object
+                    success: function( data ) { console.log( data ); }
+                });
+        })
+    
 
   
 </script>
