@@ -2,51 +2,39 @@
 
     <div class="row page-label">
         <div class="col s12 l8 offset-l2">
-            <div class="card large">
+            <div class="card">
                 <div class="card-content">
-                    <h4 style="padding-left: 10px;">Profile</h4>
+                    <h4 class="light" style="padding:20px;">Profile</h4>
 
-                    <span class="card-title activator greytext text-darken-3"><i class="material-icons right">more_vert</i></span>
+                    <span class="card-title activator greytext text-darken-3"><i class="material-icons right">mode_edit</i></span>
 
-                  <ul id="profile-page-about-feed" class="collection z-depth-1">
+                  <ul id="profile-page-about-feed" class="collection z-depth-1 light">
                   <li class="collection-item avatar">
-                    <img src="images/avatar.jpg" alt="" class="circle">
-                    <span class="title">{{user.first_name}} {{user.last_name}}</span>
-                    <a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a>
+                    {{!--<img src="images/avatar.jpg" alt="" class="circle">--}}
+                    <span class="title"><h2 class="light">{{user.first_name}} {{user.last_name}}</h2></span>
                   </li>
                   <li class="collection-item avatar">
-                    <i class="mdi-file-folder circle"></i>
+                    <i class="material-icons circle">email</i>
                     <span class="title">Email</span>
                     <p>
                         {{user.email}}
                     </p>
-                    <a href="#!" class="secondary-content"><i class="mdi-social-domain"></i></a>
+                    
                   </li>
                   <li class="collection-item avatar">
-                    <i class="mdi-action-assessment circle green"></i>
+                    <i class="material-icons circle green">phone</i>
                     <span class="title">Mobile</span>
                     <p>{{user.mobile}}</p>
-                    <a href="#!" class="secondary-content"><i class="mdi-editor-attach-money"></i></a>
                   </li>
                   <li class="collection-item avatar">
-                    <i class="mdi-av-play-arrow circle red"></i>
-                    <span class="title">Employee Id</span>
-                    <p>{{user.empID}}</p>
-                    <a href="#!" class="secondary-content"><i class="mdi-action-track-changes"></i></a>
-                  </li>
-                  <li class="collection-item avatar">
-                    <i class="mdi-av-play-arrow circle red"></i>
-                    <span class="title">Hospital</span>
-                    <p>{{user.Partner.location}}</p>
-                    <a href="#!" class="secondary-content"><i class="mdi-action-track-changes"></i></a>
-                  </li>
-
-                  <li class="collection-item avatar">
-                    <i class="mdi-av-play-arrow circle red"></i>
-                    <span class="title">Call Status:</span>
-                    <p>{{user.Status.status}}</p>
-                    <a href="#!" class="secondary-content"><i class="mdi-action-track-changes"></i></a>
-                  </li>
+                    <i class="material-icons circle light-blue darken-3">info</i>
+                    <span class="title">Employee Id: {{user.empID}}</span>
+                    <br>
+                    <span class="title">Hospital: {{user.Partner.location}}</span>
+                    <br>
+                    <a href="#!" class="secondary-content"><i class="material-icons"></i></a>
+                    <span class="title">Call Status: {{user.Status.status}}</span>
+                   </li>
                 </ul>
 
 

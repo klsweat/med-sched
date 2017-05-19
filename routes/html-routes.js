@@ -154,9 +154,9 @@ module.exports = function(app) {
 		}
 	});
 
-	app.get('/pop-matrix', isAdmin, function(req, res) {
-		res.render('pop-matrix');
-	});
+	// app.get('/pop-matrix', isAdmin, function(req, res) {
+	// 	res.render('pop-matrix');
+	// });
 
 	app.get('/users', function( req, res ) {
 		let dataObj = {};
