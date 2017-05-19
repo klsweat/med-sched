@@ -66,7 +66,7 @@ module.exports = function(app) {
 	app.post('/api/new-matrix', function(req, res) {
 		db.Matrix.create( req.body )
 				 .then( function(data) {
-				 	res.redirect('/pop-matrix');
+				 	res.redirect('/matrix');
 				 });
 	});
 

@@ -2,13 +2,54 @@
 
     <div class="row page-label">
         <div class="col s12 l8 offset-l2">
-            <h4>Profile</h4>
             <div class="card large">
                 <div class="card-content">
-                    <span class="card-title activator greytext text-darken-3">{{user.first_name}} {{user.last_name}}<i class="material-icons right">more_vert</i></span>
-                    <p>Email: {{user.email}}</p>
-                    <p>Mobile: {{user.mobile}}</p>
-                    <p>Employee Id: {{user.empID}}</p>
+                    <h4 style="padding-left: 10px;">Profile</h4>
+
+                    <span class="card-title activator greytext text-darken-3"><i class="material-icons right">more_vert</i></span>
+
+                  <ul id="profile-page-about-feed" class="collection z-depth-1">
+                  <li class="collection-item avatar">
+                    <img src="images/avatar.jpg" alt="" class="circle">
+                    <span class="title">{{user.first_name}} {{user.last_name}}</span>
+                    <a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a>
+                  </li>
+                  <li class="collection-item avatar">
+                    <i class="mdi-file-folder circle"></i>
+                    <span class="title">Email</span>
+                    <p>
+                        {{user.email}}
+                    </p>
+                    <a href="#!" class="secondary-content"><i class="mdi-social-domain"></i></a>
+                  </li>
+                  <li class="collection-item avatar">
+                    <i class="mdi-action-assessment circle green"></i>
+                    <span class="title">Mobile</span>
+                    <p>{{user.mobile}}</p>
+                    <a href="#!" class="secondary-content"><i class="mdi-editor-attach-money"></i></a>
+                  </li>
+                  <li class="collection-item avatar">
+                    <i class="mdi-av-play-arrow circle red"></i>
+                    <span class="title">Employee Id</span>
+                    <p>{{user.empID}}</p>
+                    <a href="#!" class="secondary-content"><i class="mdi-action-track-changes"></i></a>
+                  </li>
+                  <li class="collection-item avatar">
+                    <i class="mdi-av-play-arrow circle red"></i>
+                    <span class="title">Hospital</span>
+                    <p>{{user.Partner.location}}</p>
+                    <a href="#!" class="secondary-content"><i class="mdi-action-track-changes"></i></a>
+                  </li>
+
+                  <li class="collection-item avatar">
+                    <i class="mdi-av-play-arrow circle red"></i>
+                    <span class="title">Call Status:</span>
+                    <p>{{user.Status.status}}</p>
+                    <a href="#!" class="secondary-content"><i class="mdi-action-track-changes"></i></a>
+                  </li>
+                </ul>
+
+
                 </div>
                 <div class="card-reveal">
                     <span class="card-title activator greytext text-darken-3">Update Account Details<i class="material-icons right">close</i></span>
@@ -28,6 +69,7 @@
                         </div>
                         <div class="col s6">
                             <input name="mobile" type="tel" class="validate" value="{{user.mobile}}">
+                            
                         </div>
                     </div>
                     <button class="waves-effect waves-light btn" type="Submit">Submit</button>
