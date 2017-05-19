@@ -1,0 +1,82 @@
+ <script src="assets/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/json2/20140204/json2.min.js"></script>
+    <![endif]-->
+
+<div class="container">
+    <h4 class="light" style="padding:20px;">The Matrix</h4>
+    <div id="toolbar">
+        {{!-- <button id="remove" class="btn btn-danger" disabled>
+            <i class="glyphicon glyphicon-remove"></i> Delete
+        </button> --}}
+    </div>
+    <table id="table"
+           data-toolbar="#toolbar"
+           data-search="false"
+           data-show-refresh="true"
+           data-show-toggle="true"
+           data-show-columns="false"
+           data-show-export="true"
+           data-detail-view="false"
+           data-detail-formatter="detailFormatter"
+           data-minimum-count-columns="2"
+           data-show-pagination-switch="false"
+           data-pagination="false"
+           data-id-field="id"
+           data-page-list="[ALL]"
+           data-show-footer="false"
+           data-side-pagination="server"
+           data-url="/examples/bootstrap_table/data"
+           data-response-handler="responseHandler">
+    </table>
+
+
+</div>
+
+
+
+<style>
+     input {
+        text-align: center;
+        }
+</style>
+
+  <table id="table">
+        <thead>
+        <tr>
+        <th data-field="checkbox"></th>
+        <th data-field="id">ID</th>
+        <th data-field="mon">Mon</th>
+        <th data-field="tue">Item Price</th>
+        <th data-field="wed">Item Price</th>
+        <th data-field="thur">Item Price</th>
+        <th data-field="fri">Item Price</th>
+        <th data-field="satsun">Item Price</th>
+        <th data-field="order">Item Price</th>
+     
+        </tr>
+        </thead>
+    </table>
+
+{{#each row}}
+<tr>
+    <td>{{this.pos}}</td>
+    <td>{{this.mon}}</td>
+    <td>{{this.tue}}</td>
+    <td>{{this.wed}}</td>
+    <td>{{this.thur}}</td>
+    <td>{{this.fri}}</td>
+    <td>{{this.satsun}}</td>
+    <td>{{User.first_name}}</td>
+
+</tr>
+
+{{/each}}
