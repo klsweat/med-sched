@@ -3,13 +3,14 @@
 const isAuthenticated = require("../config/middleware/isAuthenticated"),
 	  isAdmin = require("../config/middleware/isAdmin"),
 	  notAuthenticated = require("../config/middleware/notAuthenticated"),
+	  moment = require('moment'),
 	  db = require('../models');
 
 module.exports = function(app) {
 
 	app.get('/', isAuthenticated, function(req, res) {
 	    
-	    res.redirect('/schedule');
+	    res.redirect('/projection');
 	});
 
 
@@ -80,26 +81,63 @@ module.exports = function(app) {
 	});
 
 	app.get('/projection', isAuthenticated, function( req, res ){
-		console.log('----','hit /projection','----');
-		db.User.findAll({ include: [db.Status, db.Partner] })
+		let admin = false;
+		if( req.user.Group.userType === 'admin' || req.user.Group.userType === 'scheduler'){
+			admin = true;
+		}
+		db.User.findAll({ include: [db.Status, db.Partner], order: ['StatusId', 'id']})
 			   .then(function(data){
-			   		console.log('----','doing then function','----');
+			   		let startDay = req.query.start_date ||  Date.now() ;
+			   		let numWeeks = parseInt(req.query.numWeeks) || 13;
 			   		let len = data.length;
 					let header = {}, 
-						week = {};
-					data.sort( projectionSort );
+						week = [];
+					//data.sort( idSort );
 					for( let i =  0; i < len; i++){
 
 						if( data[i].StatusId ) {
 
-							console.log('----', data[i].StatusId, data[i].Status.status, data[i], '----');
+							
 							header[ data[i].Status.status ] = header[ data[i].Status.status ] || [];
 							
 							header[ data[i].Status.status ].push( initialThis( data[i] ) );
 						}
 					}
-					console.log('header', header);
-					res.render( 'projection', {header: [], week: []} );
+					
+					for(let i = 0; i < numWeeks; i++){
+						week.push([]);
+						//console.log('------ good 1 ------');
+						week[i].push({day: [moment(startDay).format('DD-MMM')]});
+						let k = 1;
+						//console.log('------ good 2 ------');
+						for(let key in header){
+							let tempObj = {};
+							tempObj[key] = [];
+							
+							//console.log('------ good 3 ------');
+							// console.log('---', week, '---')
+							var numPeople = header[key].length
+							// console.log('---', 'People:', numPeople, '---')
+							// console.log('---', 'Weeks:', numWeeks, '---')
+							//console.log('---', 'i:', i, '---')	
+
+							for(let j = 0; j < numPeople; j++){
+								// console.log('---', 'j:', j, '---')					
+								// var loopVal = ( (i+j) % numPeople + 1 )
+								// console.log('---', 'loopVal:', loopVal, '---')	
+								tempObj[key].push( ( ( (i+j) % numPeople) + k ) );
+								//console.log('------ good 4 ------');
+							}
+							week[i].push( tempObj );
+							k += numPeople;	
+						}
+						startDay = moment(startDay).add(7, 'days');
+							//console.log('---', week[key].key, week[key], '---')	
+					}
+					//res.json( week );
+					projObj = {admin: admin, header: header, week: week};
+					res.render( 'projection', projObj );
+					//res.json(projObj);
 				}).catch( function(error) {
 					console.log('----','this shiz errored','----');
 					console.log(error.message);
@@ -108,10 +146,10 @@ module.exports = function(app) {
 
 		//function to return uppercase initials of user's name
 		let initialThis = function( user ) {
-			return user.dataValues.first_name.charAt[0].toUpperCase() + user.dataValues.last_name.charAt[0].toUpperCase();
+			return user.first_name.charAt(0).toUpperCase() + user.last_name.charAt(0).toUpperCase();
 		}
 		//function to sort array by object's id field
-		let projectionSort = function(a,b) {
+		let idSort = function(a,b) {
 			return a.id - b.id;
 		}
 	});
