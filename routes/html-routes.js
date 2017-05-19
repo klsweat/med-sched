@@ -93,7 +93,7 @@ module.exports = function(app) {
 		res.render('pop-matrix');
 	});
 
-	app.get('/admin/users', function( req, res ) {
+	app.get('/users', function( req, res ) {
 		let dataObj = {};
 
 		db.Partner.findAll({})
