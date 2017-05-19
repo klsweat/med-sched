@@ -3,6 +3,7 @@
 const isAuthenticated = require("../config/middleware/isAuthenticated"),
 	  isAdmin = require("../config/middleware/isAdmin"),
 	  isScheduler = require("../config/middleware/isScheduler"),
+	  moment = require('moment'),
 	  db = require('../models');
 
 module.exports = function(app) {
@@ -28,7 +29,11 @@ module.exports = function(app) {
 										include: [db.Status, db.Partner]}
 										]})
 						  .then( function( data ) {
-						  	  console.log( "Here is the VACAY DATAY: \n ----------- \n", data[0].start_date );
+						  	 for(let i in data){
+						  	 	data[i].start_date = moment( data[i].start_date ).format('MMM DD, YYYY');
+						  	 	data[i].end_date = moment( data[i].end_date ).format('MMM DD, YYYY');
+						  	 }
+						  	  //console.log( "Here is the VACAY DATAY: \n ----------- \n", data[0].start_date );
 						  	 res.render('vacationAdmin', {vacation: data});
 						  }).catch( function(error) {
 						  	 console.log(error.message);

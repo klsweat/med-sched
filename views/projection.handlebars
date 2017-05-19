@@ -1,34 +1,87 @@
-<h4>Projection</h4>
 
-<div class="row">
-    <div class="input-field col s12 l8 offset-l2">
+<div class='container'>
         <div class="row">
-            <h4 class="light" style="padding:20px;">Insert Projection</h4>
-            {{#if admin}}
-            <!--button-->
-            {{/if}}
-            <table>
+            <h3 class="light" style="padding:20px;">Schedule Projection</h3>
+        </div>
+        <div class='row'>
+            {{!-- dropdown for partner select --}}
+        </div>
+        <div class="row">
+
+          <div class='col s12'>  
+            <table class='striped'>
+
                 <thead>
                     <tr>
-                        {{#each user}}
-                        <th>
-                            {{@val}}
-                        </th>
+                        <th>Week</th>
+                        {{#each header}}
+                            {{#each this}}
+                                <th>{{.}}</th>
+                            {{/each}}
                         {{/each}}
                     </tr>
                 </thead>
                 <tbody>
                     {{#each week}}
-                    <tr>
-                        {{#each this}}
-                        <td>
-                            {{put a number up in here}}
-                        </td>
-                        {{/each}}
-                    </tr>
+                        <tr> 
+                            {{#each this}}
+                              {{#each this}}
+                                {{#each this}}
+                                    <td>{{.}}</td>
+                                {{/each}}
+                              {{/each}} 
+                            {{/each}}
+                        </tr>
                     {{/each}}
                 </tbody>
             </table>
+          </div>
+        </div> 
+        {{#if admin}}
+        <div class='row'>
+            {{!-- {{#if admin}} --}}
+            <form id="vacayForm" class="col s12" action='/projection' onsubmit="return validateForm()" method='GET'>
+                <div class="col s4 input-field">
+                    <input class='datepicker' id="datepicker1" name="start_date" type="date" class="validate">
+                    <label for="start_date">Start Date</label>
+                </div>
+                <div class="col s4 input-field">
+                    <input type='number' name="numWeeks" id='numWeeks' class="materialize-textarea" placeholder="Number of Weeks"></input>
+                </div>
+                <div class="col s4 input-field">
+                    <button id="submay" class="waves-effect waves-light btn" type="Submit">Submay</button>
+                </div>
+            </form>
+            {{!-- {{/if}} --}}
         </div>
-    </div>
+        {{/if}}
+        
+
 </div>
+
+
+<script>
+
+    function validateForm() {
+        var x = $('#datepicker1').val(),
+            y = $('#numWeeks').val();
+
+        if (x == "" || y = '') {
+            // something here to ask if they're sure, or to just flat out ignore it
+            return false;
+        }
+    }
+
+    $(document).ready(function () {
+
+        $('input.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year
+            onSet: function() {
+                setTimeout(this.close, 0);
+            }
+        });
+
+    });
+
+</script>
