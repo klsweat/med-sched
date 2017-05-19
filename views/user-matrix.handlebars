@@ -1,0 +1,168 @@
+<script src="assets/jquery.min.js">
+</script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/json2/20140204/json2.min.js"></script>
+    <![endif]-->
+
+<div class="container">
+    <h4 class="light" style="padding:20px;">The Matrix</h4>
+    <div id="toolbar">
+        {{!-- <button id="remove" class="btn btn-danger" disabled>
+            <i class="glyphicon glyphicon-remove"></i> Delete
+        </button> --}}
+    </div>
+    <div class="bootstrap-table">
+        <div class="fixed-table-toolbar">
+            <div class="bs-bars pull-left">
+                <div id="toolbar"></div>
+            </div>
+            <div class="columns columns-right btn-group pull-right"><button class="btn btn-default" type="button" name="refresh" aria-label="refresh" title="Refresh"><i class="glyphicon glyphicon-refresh icon-refresh"></i></button>
+                <button
+                    class="btn btn-default" type="button" name="toggle" aria-label="toggle" title="Toggle"><i class="glyphicon glyphicon-list-alt icon-list-alt"></i></button>
+                    <div class="export btn-group"><button class="btn btn-default dropdown-toggle" aria-label="export type" title="Export data" data-toggle="dropdown"
+                            type="button"><i class="glyphicon glyphicon-export icon-share"></i> <span class="caret"></span></button>
+                        <ul
+                            class="dropdown-menu" role="menu">
+                            <li role="menuitem" data-type="json"><a href="javascript:void(0)">JSON</a></li>
+                            <li role="menuitem" data-type="xml"><a href="javascript:void(0)">XML</a></li>
+                            <li role="menuitem" data-type="csv"><a href="javascript:void(0)">CSV</a></li>
+                            <li role="menuitem" data-type="txt"><a href="javascript:void(0)">TXT</a></li>
+                            <li role="menuitem" data-type="sql"><a href="javascript:void(0)">SQL</a></li>
+                            <li role="menuitem" data-type="excel"><a href="javascript:void(0)">MS-Excel</a></li>
+                            </ul>
+                    </div>
+            </div>
+        </div>
+        <div class="fixed-table-container" style="height: 303px; padding-bottom: 40px;">
+            <div class="fixed-table-header" style="margin-right: 0px;">
+                <table class="table table-hover" style="width: 839px;">
+                    <thead>
+                        <tr>
+                            <th class="bs-checkbox " style="text-align: center; vertical-align: middle; width: 36px; " rowspan="1"
+                                data-field="state">
+                                <div class="th-inner "><input name="btSelectAll" type="checkbox"></div>
+                                <div class="fht-cell" style="width: 36px;"></div>
+                            </th>
+                            <th style="text-align: center; vertical-align: middle; " rowspan="1" data-field="Pos">
+                                <div class="th-inner ">Pos</div>
+                                <div class="fht-cell" style="width: 61px;"></div>
+                            </th>
+                            <th style="text-align: center; " rowspan="1" data-field="Mon">
+                                <div class="th-inner ">Monday</div>
+                                <div class="fht-cell" style="width: 102px;"></div>
+                            </th>
+                            <th style="text-align: center; " rowspan="1" data-field="Tues">
+                                <div class="th-inner ">Tuesday</div>
+                                <div class="fht-cell" style="width: 103px;"></div>
+                            </th>
+                            <th style="text-align: center; " rowspan="1" data-field="Wed">
+                                <div class="th-inner ">Wednesday</div>
+                                <div class="fht-cell" style="width: 135px;"></div>
+                            </th>
+                            <th style="text-align: center; " rowspan="1" data-field="Thur">
+                                <div class="th-inner ">Thursday</div>
+                                <div class="fht-cell" style="width: 114px;"></div>
+                            </th>
+                            <th style="text-align: center; " rowspan="1" data-field="Fri">
+                                <div class="th-inner ">Friday</div>
+                                <div class="fht-cell" style="width: 85px;"></div>
+                            </th>
+                            <th style="text-align: center; " rowspan="1" data-field="SatSun">
+                                <div class="th-inner ">Sat/Sun</div>
+                                <div class="fht-cell" style="width: 101px;"></div>
+                            </th>
+                            <th style="text-align: center; " rowspan="1" data-field="User.first_name">
+                                <div class="th-inner ">Person</div>
+                                <div class="fht-cell" style="width: 94px;"></div>
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="fixed-table-body">
+                <div class="fixed-table-loading" style="top: 41px; display: none;">Loading, please wait...</div>
+                <table id="table" data-toolbar="#toolbar" data-search="false" data-show-refresh="true"
+                    data-show-toggle="true" data-show-columns="false" data-show-export="true" data-detail-view="false" data-detail-formatter="detailFormatter"
+                    data-minimum-count-columns="2" data-show-pagination-switch="false" data-pagination="false" data-id-field="id"
+                    data-page-list="[ALL]" data-show-footer="false" data-side-pagination="server" data-url="/examples/bootstrap_table/data"
+                    data-response-handler="responseHandler" class="table table-hover" style="margin-top: -40px;">
+                    <thead>
+                        <tr>
+                            <th class="bs-checkbox " style="text-align: center; vertical-align: middle; width: 36px; " rowspan="1"
+                                data-field="state">
+                                <div class="th-inner "><input name="btSelectAll" type="checkbox"></div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="text-align: center; vertical-align: middle; " rowspan="1" data-field="Pos">
+                                <div class="th-inner ">Pos</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="text-align: center; " rowspan="1" data-field="Mon">
+                                <div class="th-inner ">Monday</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="text-align: center; " rowspan="1" data-field="Tues">
+                                <div class="th-inner ">Tuesday</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="text-align: center; " rowspan="1" data-field="Wed">
+                                <div class="th-inner ">Wednesday</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="text-align: center; " rowspan="1" data-field="Thur">
+                                <div class="th-inner ">Thursday</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="text-align: center; " rowspan="1" data-field="Fri">
+                                <div class="th-inner ">Friday</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="text-align: center; " rowspan="1" data-field="SatSun">
+                                <div class="th-inner ">Sat/Sun</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="text-align: center; " rowspan="1" data-field="User.first_name">
+                                <div class="th-inner ">Person</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each row}}
+                        <tr data-index="{{this.pos}}">
+                            <td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox"></td>
+                            <td style="text-align: center; vertical-align: middle; ">{{this.pos}}</td>
+                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="Mon" data-pk="undefined" data-value="" class="">{{User.mon}}</a></td>
+                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="Tues" data-pk="undefined" data-value="" class="">{{this.tue}}</a></td>
+                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="Wed" data-pk="undefined" data-value="" class="">{{this.wed}}</a></td>
+                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="Thur" data-pk="undefined" data-value="" class="">{{this.thur}}</a></td>
+                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="Fri" data-pk="undefined" data-value="" class="">{{this.fri}}</a></td>
+                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="SatSun" data-pk="undefined" data-value="" class="  ">{{this.satsun}}</a></td>
+                            <td style="text-align: center; ">{{User.first_name}}</td>
+
+
+
+                        </tr>
+                        {{/each}}
+                      
+                    </tbody>
+                </table>
+            </div>
+            <div class="fixed-table-footer" style="display: none;">
+                <table>
+                    <tbody>
+                        <tr></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="fixed-table-pagination" style="display: none;"></div>
+        </div>
+    </div>
