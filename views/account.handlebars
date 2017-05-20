@@ -1,4 +1,5 @@
-
+    <br>
+    <br>
 
     <div class="row page-label">
         <div class="col s12 l8 offset-l2">
@@ -6,14 +7,17 @@
                 <div class="card-content">
                     <h4 class="light" style="padding:20px;">Profile</h4>
 
-                    <span class="card-title activator greytext text-darken-3"><i class="material-icons right">mode_edit</i></span>
-
                   <ul id="profile-page-about-feed" class="collection z-depth-1 light">
-                  <li class="collection-item avatar">
+                    <li class="collection-item avatar valign-wrapper" style="min-height: 69px;">
                     {{!--<img src="images/avatar.jpg" alt="" class="circle">--}}
-                    <span class="title"><h2 class="light">{{user.first_name}} {{user.last_name}}</h2></span>
+                    <i class="material-icons circle  blue-grey">perm_identity</i>
+                    <span class="title"><h4 class="light">{{user.first_name}} {{user.last_name}}</h4></span>
+                    <div class="col l3" style="float:right;">
+                    <i class="material-icons right" >mode_edit</i></span>
+                    </div>
+
                   </li>
-                  <li class="collection-item avatar">
+                    <li class="collection-item avatar" style="min-height: 69px;">
                     <i class="material-icons circle">email</i>
                     <span class="title">Email</span>
                     <p>
@@ -21,12 +25,12 @@
                     </p>
                     
                   </li>
-                  <li class="collection-item avatar">
+                    <li class="collection-item avatar" style="min-height: 69px;">
                     <i class="material-icons circle green">phone</i>
                     <span class="title">Mobile</span>
                     <p>{{user.mobile}}</p>
                   </li>
-                  <li class="collection-item avatar">
+                    <li class="collection-item avatar" style="min-height: 69px;">
                     <i class="material-icons circle light-blue darken-3">info</i>
                     <span class="title">Employee Id: {{user.empID}}</span>
                     <br>
