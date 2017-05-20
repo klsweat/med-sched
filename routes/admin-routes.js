@@ -9,20 +9,16 @@ const isAuthenticated = require("../config/middleware/isAuthenticated"),
 module.exports = function(app) {
 
 	app.get('/admin', isAuthenticated, isScheduler, function(req, res){
-		let admin = {admin: false}
-
-		if( req.user.Group.userType === 'admin') {
-			admin.admin = true;
+		let admin = false;
+		if( req.user.Group.userType === 'admin'){
+			admin = true;
 		}
 		
-		res.render('admin', admin);
+		res.render('admin', {superAdmin: admin});
 		
 	});
 
 	app.get('/admin/vacations', isAuthenticated, isScheduler, function(req, res){
-		// if(req.user.group !== 'admin'){
-		// 	res.redirect('/');
-		// }
 		db.VacationRequest.findAll({include: [{
 										model: db.User,
 										As: 'User',
@@ -34,16 +30,21 @@ module.exports = function(app) {
 						  	 	data[i].end_date = moment( data[i].end_date ).format('MMM DD, YYYY');
 						  	 }
 						  	  //console.log( "Here is the VACAY DATAY: \n ----------- \n", data[0].start_date );
-						  	 res.render('vacationAdmin', {vacation: data});
+						  	 res.render('vacationAdmin', {admin: true, vacation: data});
 						  }).catch( function(error) {
 						  	 console.log(error.message);
 						  });
-
 	});
 
-	app.get('/admin/add-user', function( req, res ) {
+	app.get('/admin/add-user', isAuthenticated, isAdmin, function( req, res ) {
 		let dataObj = {};
+		dataObj.admin = true;
 
+		if( req.query.failed ){
+			dataObj.failed = req.query.failed;
+			dataObj.message = req.query.msg;
+			console.log('-----', dataObj.message, '-------')
+		}
 		db.Partner.findAll({})
 				  .then( function( data ) {
 				  	 dataObj.Partner = data;
@@ -59,13 +60,11 @@ module.exports = function(app) {
 
 
 	app.get('/admin/add-partner', isAuthenticated, isAdmin, function( req, res ) {
-
-		res.render('add-partner');
+		res.render('add-partner', {admin: true});
 	});
 
-	app.get('/admin/matrix', isAuthenticated, function(req, res) {	
-		console.log('/matrix hit');
-	 	res.render('matrix');
+	app.get('/matrix', isAuthenticated, isScheduler, function(req, res) {	
+	 	res.render('matrix', {admin: true});
 	 });
 
 	app.put('/admin/vacations', isAuthenticated, isAdmin, function( req, res ) {

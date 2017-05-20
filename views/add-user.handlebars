@@ -2,6 +2,13 @@
             <div class="row page-label">
                 <div class="col s12 l8 offset-l2">
                     <h4 class="light" style="padding:20px;">Add a User</h4>
+                    {{#if failed}}
+                    <div id="card-alert" class="card red">
+                          <div class="card-content white-text center-align" style='padding: 5px;'>
+                            {{message}}
+                          </div>
+                    </div>
+                    {{/if}}
                 </div>
             </div>
             
@@ -76,3 +83,11 @@
                 </div>
             </div>
         </form>
+
+<script>
+setTimeout(dismissCard, 5000);
+
+function dismissCard() {
+    $('#card-alert').remove();
+}
+</script>
