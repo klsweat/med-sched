@@ -1,5 +1,7 @@
 var db = require("../models");
-var passport = require("../config/passport");
+var passport = require("../config/passport"),
+    isAuthenticated = require("../config/middleware/isAuthenticated"),
+    isAdmin = require("../config/middleware/isAdmin");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -17,17 +19,49 @@ module.exports = function(app) {
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
-  app.post("/api/add-user", function(req, res) {
-    console.log('adding user', req.body);
-    db.User.create(
-        req.body
-    ).then( function(data) {
-      
-      res.redirect('/admin/add-user');
-    }).catch(function(err) {
-      console.log(err.message);
-      res.sendStatus(400);
-    });
+  app.post("/api/add-user", isAuthenticated, isAdmin, function(req, res) {
+    //check to see if user already exists
+    db.User.findOne({where: {email: req.body.email}})
+           .then( function (data) {
+             if(data) { //if it does, tell them so
+                let msg = 'ACCOUNT CREATION FAILED: Email already exists.'
+                res.redirect('/admin/add-user?failed=true&msg=' + encodeURIComponent(msg) );
+             }
+             else{ //if it doesn't, create the new user
+                db.User.create(req.body)
+                       .then( function(data) {
+                          res.redirect('/admin/add-user');
+                      }).catch(function(err) {
+                          console.log(err.message);
+                          res.redirect('/admin/add-user?failed=true&msg=' + encodeURIComponent(err.message) );
+                      });
+             }
+           }).catch(function(err) {
+                console.log(err.message);
+                res.redirect('/admin/add-user?failed=true&msg=' + encodeURIComponent(err.message) );
+           });  
+  });
+
+  //identical to the above, but without an authentication check, for adding user if none exists in database
+  app.post("/shush/about/this/secret/route/add-user", function(req, res) {
+    db.User.findOne({where: {email: req.body.email}})
+           .then( function (data) {
+             if(data) {
+                res.redirect('/admin/add-user?failed=true');
+             }
+             else{
+                db.User.create(req.body)
+                       .then( function(data) {
+                          res.redirect('/admin/add-user');
+                      }).catch(function(err) {
+                          console.log(err.message);
+                          res.sendStatus(400);
+                      });
+             }
+           }).catch(function(err) {
+                console.log(err.message);
+                res.sendStatus(400);
+           }); 
   });
 
   // Route for logging user out
@@ -35,27 +69,4 @@ module.exports = function(app) {
     req.logout();
     res.redirect("/");
   });
-
-
-
-
-
-  //from passport example. can probably be deleted, but just commented for now
-
-  // Route for getting some data about our user to be used client side
-  // app.get("/api/user_data", function(req, res) {
-  //   if (!req.user) {
-  //     // The user is not logged in, send back an empty object
-  //     res.json({});
-  //   }
-  //   else {
-  //     // Otherwise send back the user's email and id
-  //     // Sending back a password, even a hashed password, isn't a good idea
-  //     res.json({
-  //       email: req.user.email,
-  //       id: req.user.id
-  //     });
-  //   }
-  // });
-
 };

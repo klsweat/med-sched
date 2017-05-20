@@ -22,7 +22,7 @@
     <div class="bootstrap-table">
         <div class="fixed-table-toolbar">
             <div class="bs-bars pull-left">
-                <div id="toolbar"></div>
+                <div id="toolbar">{{#if admin}}<a class="waves-effect waves-light btn" href='/matrix'>Update Matrix</a>{{/if}}</div>
             </div>
             <div class="columns columns-right btn-group pull-right"><button class="btn btn-default" type="button" name="refresh" aria-label="refresh" title="Refresh"><i class="glyphicon glyphicon-refresh icon-refresh"></i></button>
                 <button
@@ -46,11 +46,11 @@
                 <table class="table table-hover" style="width: 839px;">
                     <thead>
                         <tr>
-                            <th class="bs-checkbox " style="text-align: center; vertical-align: middle; width: 36px; " rowspan="1"
+                            {{!-- <th class="bs-checkbox " style="text-align: center; vertical-align: middle; width: 36px; " rowspan="1"
                                 data-field="state">
                                 <div class="th-inner "><input name="btSelectAll" type="checkbox"></div>
                                 <div class="fht-cell" style="width: 36px;"></div>
-                            </th>
+                            </th> --}}
                             <th style="text-align: center; vertical-align: middle; " rowspan="1" data-field="Pos">
                                 <div class="th-inner ">Pos</div>
                                 <div class="fht-cell" style="width: 61px;"></div>
@@ -96,11 +96,11 @@
                     data-response-handler="responseHandler" class="table table-hover" style="margin-top: -40px;">
                     <thead>
                         <tr>
-                            <th class="bs-checkbox " style="text-align: center; vertical-align: middle; width: 36px; " rowspan="1"
+                           {{!--  <th class="bs-checkbox " style="text-align: center; vertical-align: middle; width: 36px; " rowspan="1"
                                 data-field="state">
                                 <div class="th-inner "><input name="btSelectAll" type="checkbox"></div>
                                 <div class="fht-cell"></div>
-                            </th>
+                            </th> --}}
                             <th style="text-align: center; vertical-align: middle; " rowspan="1" data-field="Pos">
                                 <div class="th-inner ">Pos</div>
                                 <div class="fht-cell"></div>
@@ -138,14 +138,14 @@
                     <tbody>
                         {{#each row}}
                         <tr data-index="{{this.pos}}">
-                            <td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox"></td>
-                            <td style="text-align: center; vertical-align: middle; ">{{this.pos}}</td>
-                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="Mon" data-pk="undefined" data-value="" class="">{{User.mon}}</a></td>
-                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="Tues" data-pk="undefined" data-value="" class="">{{this.tue}}</a></td>
-                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="Wed" data-pk="undefined" data-value="" class="">{{this.wed}}</a></td>
-                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="Thur" data-pk="undefined" data-value="" class="">{{this.thur}}</a></td>
-                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="Fri" data-pk="undefined" data-value="" class="">{{this.fri}}</a></td>
-                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="SatSun" data-pk="undefined" data-value="" class="  ">{{this.satsun}}</a></td>
+                            {{!-- <td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox"></td> --}}
+                            <td style="text-align: center; vertical-align: middle; ">{{this.Pos}}</td>
+                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="Mon" data-pk="undefined" data-value="" class="">{{User.Mon}}</a></td>
+                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="Tues" data-pk="undefined" data-value="" class="">{{this.Tue}}</a></td>
+                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="Wed" data-pk="undefined" data-value="" class="">{{this.Wed}}</a></td>
+                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="Thur" data-pk="undefined" data-value="" class="">{{this.Thur}}</a></td>
+                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="Fri" data-pk="undefined" data-value="" class="">{{this.Fri}}</a></td>
+                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="SatSun" data-pk="undefined" data-value="" class="  ">{{this.SatSun}}</a></td>
                             <td style="text-align: center; ">{{User.first_name}}</td>
 
 
