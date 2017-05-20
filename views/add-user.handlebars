@@ -4,6 +4,13 @@
             <div class="card ">
                 <div class="card-tabs" style="padding:20px;">
                     <h4 class="light" style="padding:20px;">Add a User</h4>
+                    {{#if failed}}
+                    <div id="card-alert" class="card red">
+                          <div class="card-content white-text center-align" style='padding: 5px;'>
+                            {{message}}
+                          </div>
+                    </div>
+                    {{/if}}
                 </div>
                 <!--/card-tabs-->
 
@@ -127,3 +134,10 @@
     </div>
     <!--/page-level-->
 </form>
+
+<script>
+setTimeout(dismissCard, 5000);
+function dismissCard() {
+    $('#card-alert').remove();
+}
+</script>
