@@ -1,58 +1,137 @@
-<form id="vacayForm" class="col s12" action='/vacation' method='POST'>
-    <div class="row page-label">
-        <div class="col s12 l8 offset-l2">
-            <br> <br>
-      
-            <h4 class="light" style="padding:20px;">Vacay Requay</h4>
-            <div class="row">
-                <div class="input-field col s12 l8 offset-l2">
-                    <div class="row">
-                        <div class="col s6 input-field">
-                            <input class='datepicker' id="datepicker1" name="start_date" type="date" class="validate">
-                            <label for="start_date">Start Date</label>
+<br>
+<br>
+<style>
+    .bootstrap-table .table>thead>tr>th {
+        vertical-align: bottom;
+        border-bottom: 1px solid #ddd;
+    }
+</style>
+<div class="row col-md-12">
+    <div class="col-md-7">
+        <form id="vacayForm" action='/vacation' method='POST'>
+            <div class="row page-label">
+                <div class="col s12 l12" style="float:left;">
+                    <div class="card ">
+
+                        <div class="card-tabs" style="padding:20px;">
+                            <h4 class="light" style="padding:20px;">Vacay Requay</h4>
                         </div>
-                        <div class="col s6 input-field">
-                            <input class='datepickertwo' id="datepicker2" name="end_date" type="date" class="validate">
-                            <label for="end_date">End Date</label>
+
+                        <div class="card-action">
+                            <div class="row">
+                                <div class="input-field col s12 l12">
+                                    <div class="row">
+                                        <div class="col s6 input-field">
+                                            <input class='datepicker' id="datepicker1" name="start_date" type="date" class="validate">
+                                            <label for="start_date">Start Date</label>
+                                        </div>
+                                        <div class="col s6 input-field">
+                                            <input class='datepickertwo' id="datepicker2" name="end_date" type="date" class="validate">
+                                            <label for="end_date">End Date</label>
+                                        </div>
+                                        <div class="col s12">
+                                            <textarea name="comment" class="materialize-textarea" placeholder="Please add additional details"></textarea>
+                                        </div>
+                                    </div>
+                                    <!--/row-->
+                                </div>
+                                <!--/input-field-->
+                            </div>
+                            <!-- /row  -->
+
+                            <div class="row">
+                                <div class="input-field col s12 l5">
+                                    <button id="submay" class="waves-effect waves-light btn" style="padding-left: 51px;" type="Submit">Submay
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col s12">
-                            <textarea name="comment" class="materialize-textarea" placeholder="Please add additional details"></textarea>
-                        </div>
+                        <!--/card-action-->
                     </div>
+                    <!--/card-->
                 </div>
+                <!--/s12-->
             </div>
-            <div class="row">
-                <div class="input-field col s12 l8 offset-l2">
-                    <button id="submay" class="waves-effect waves-light btn" type="Submit">Submay</button>
-                </div>
+            <!--/row page-label-->
+        </form>
+    </div>
+    <div class="col-md-5" style="float:right;">
+        <div class="col s8 l12 ">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+
+                        <th style="text-align: center; vertical-align: middle; " rowspan="1" data-field="Status">
+                            <div class="th-inner ">Status</div>
+                            <div class="fht-cell"></div>
+                        </th>
+                        <th style="text-align: center; " rowspan="1" data-field="Start-Date">
+                            <div class="th-inner ">Start Date</div>
+                            <div class="fht-cell"></div>
+                        </th>
+                        <th style="text-align: center; " rowspan="1" data-field="End-Date">
+                            <div class="th-inner ">End Date</div>
+                            <div class="fht-cell"></div>
+                        </th>
+                        <th style="text-align: center; " rowspan="1" data-field="Comment">
+                            <div class="th-inner ">Comment</div>
+                            <div class="fht-cell"></div>
+                        </th>
+
+
+                    </tr>
+                </thead>
+            </table>
+            <div class="fixed-table-body">
+                <div class="fixed-table-loading" style="top: 41px; display: none;">Loading, please wait...</div>
+                <table id="table" data-toolbar="#toolbar" data-search="false" data-show-refresh="true" data-show-toggle="true" data-show-columns="false"
+                    data-show-export="true" data-detail-view="false" data-detail-formatter="detailFormatter" data-minimum-count-columns="2"
+                    data-show-pagination-switch="false" data-pagination="false" data-id-field="id" data-page-list="[ALL]" data-show-footer="false"
+                    data-side-pagination="server" data-url="/examples/bootstrap_table/data" data-response-handler="responseHandler"
+                    class="table table-hover" style="margin-top: -40px;">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center; vertical-align: middle; " rowspan="1" data-field="Status">
+                                <div class="th-inner ">Status</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="text-align: center; " rowspan="1" data-field="Start-Date">
+                                <div class="th-inner ">Start Date</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="text-align: center; " rowspan="1" data-field="End-Date">
+                                <div class="th-inner ">End Date</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="text-align: center; " rowspan="1" data-field="Comment">
+                                <div class="th-inner ">Comment</div>
+                                <div class="fht-cell"></div>
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each vacation}}
+
+                        <tr data-index="">
+                            <td style="text-align: center; vertical-align: middle; ">{{this.status}}</td>
+                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="Mon" data-pk="undefined" data-value="" class="">{{this.start_date}}</a></td>
+                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="Tues" data-pk="undefined" data-value="" class="">{{this.end_date}}</a></td>
+                            <td style="text-align: center; "><a href="javascript:void(0)" data-name="Wed" data-pk="undefined" data-value="" class="">{{this.comment}}</a></td>
+                        </tr>
+                        {{/each}}
+
+
+
+                    </tbody>
+                </table>
             </div>
+
         </div>
     </div>
-</form>
-
-<!--table start-->
-<div class="col s12 l8 offset-l2">
-    <table class="highlight responsive-table">
-        <thead>
-          <tr>
-              <th>Status</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-              <th>Comment</th>
-          </tr>
-        </thead>
-        <tbody>
-        {{#each vacation}}
-            
-          <tr>
-            <td>{{this.status}}</td>
-            <td>{{this.start_date}}</td>
-            <td>{{this.end_date}}</td>
-            <td>{{this.comment}}</td>
-          </tr>
-          
-        {{/each}}
 </div>
+
 
 <script>
     $(document).ready(function () {
@@ -60,7 +139,7 @@
         $('input.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
             selectYears: 15, // Creates a dropdown of 15 years to control year
-            onSet: function() {
+            onSet: function () {
                 setTimeout(this.close, 0);
             }
         });
@@ -68,14 +147,12 @@
         $('input.datepickertwo').pickadate({
             selectMonths: true, // Creates a dropdown to control month
             selectYears: 15, // Creates a dropdown of 15 years to control year
-            onSet: function() {
+            onSet: function () {
                 setTimeout(this.close, 0);
             }
         });
 
 
     });
-
-
 
 </script>
