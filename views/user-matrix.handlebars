@@ -46,11 +46,11 @@
                 <table class="table table-hover" style="width: 839px;">
                     <thead>
                         <tr>
-                            {{!-- <th class="bs-checkbox " style="text-align: center; vertical-align: middle; width: 36px; " rowspan="1"
+                            <th class="bs-checkbox " style="text-align: center; vertical-align: middle; width: 36px; " rowspan="1"
                                 data-field="state">
                                 <div class="th-inner "><input name="btSelectAll" type="checkbox"></div>
                                 <div class="fht-cell" style="width: 36px;"></div>
-                            </th> --}}
+                            </th>
                             <th style="text-align: center; vertical-align: middle; " rowspan="1" data-field="Pos">
                                 <div class="th-inner ">Pos</div>
                                 <div class="fht-cell" style="width: 61px;"></div>
@@ -85,7 +85,7 @@
                             </th>
                         </tr>
                     </thead>
-                {{!-- </table>
+                </table>
             </div>
             <div class="fixed-table-body">
                 <div class="fixed-table-loading" style="top: 41px; display: none;">Loading, please wait...</div>
@@ -96,11 +96,11 @@
                     data-response-handler="responseHandler" class="table table-hover" style="margin-top: -40px;">
                     <thead>
                         <tr>
-                           {{!--  <th class="bs-checkbox " style="text-align: center; vertical-align: middle; width: 36px; " rowspan="1"
+                            <th class="bs-checkbox " style="text-align: center; vertical-align: middle; width: 36px; " rowspan="1"
                                 data-field="state">
                                 <div class="th-inner "><input name="btSelectAll" type="checkbox"></div>
                                 <div class="fht-cell"></div>
-                            </th> --}}
+                            </th>
                             <th style="text-align: center; vertical-align: middle; " rowspan="1" data-field="Pos">
                                 <div class="th-inner ">Pos</div>
                                 <div class="fht-cell"></div>
@@ -134,12 +134,12 @@
                                 <div class="fht-cell"></div>
                             </th>
                         </tr>
-                    </thead> --}}
+                    </thead>
                     <tbody>
                         {{#each row}}
                         <tr data-index="{{this.Pos}}">
 
-                            {{!-- <td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox"></td> --}}
+                            <td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox"></td>
                             <td style="text-align: center; vertical-align: middle; ">{{this.Pos}}</td>
                             <td style="text-align: center; "><a href="javascript:void(0)" data-name="Mon" data-pk="undefined" data-value="" class="">{{this.Mon}}</a></td>
                             <td style="text-align: center; "><a href="javascript:void(0)" data-name="Tues" data-pk="undefined" data-value="" class="">{{this.Tues}}</a></td>
